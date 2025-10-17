@@ -2,6 +2,7 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { ExternalLink, Github, Linkedin, Mail, Code, Database, Globe } from 'lucide-react';
 import Image from 'next/image';
+import { TypewriterText } from '@/components/TypewriterText';
 
 export default function Home() {
   const projects = [
@@ -61,8 +62,12 @@ export default function Home() {
                       Bruno Gonçalves
                     </h2>
                     <div className="flex items-center space-x-2">
-                      <span className="text-4xl md:text-6xl font-bold accent-primary">Front-End</span>
-                      <span className="text-4xl md:text-6xl font-bold text-primary">Developer</span>
+                      <TypewriterText 
+                        texts={["Front-End Developer", "Full-Stack Developer", "Web Developer", "Desenvolvedor"]}
+                        className="text-4xl md:text-6xl font-bold accent-primary"
+                        speed={100}
+                        pauseTime={2500}
+                      />
                     </div>
                   </div>
 
@@ -71,7 +76,7 @@ export default function Home() {
                     {['HTML', 'CSS', 'JavaScript', 'React', 'MySQL', 'PHP'].map((tech) => (
                       <span
                         key={tech}
-                        className="px-6 py-3 bg-primary/20 border-2 border-accent-primary rounded-full text-primary text-sm font-medium backdrop-blur-sm hover:bg-accent-primary/10 transition-colors duration-200"
+                        className="px-6 py-3 border-2 border-accent-primary rounded-full text-primary text-sm font-medium hover:bg-accent-primary/10 transition-colors duration-200"
                       >
                         {tech}
                       </span>
