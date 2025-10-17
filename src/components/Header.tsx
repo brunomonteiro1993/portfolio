@@ -1,17 +1,18 @@
-'use client';
+"use client";
 
-import { ThemeToggle } from './ThemeToggle';
-import { Menu, X } from 'lucide-react';
-import { useState } from 'react';
+import { ThemeToggle } from "./ThemeToggle";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
+import Image from "next/image";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navigation = [
-    { name: 'Início', href: '#inicio' },
-    { name: 'Sobre', href: '#sobre' },
-    { name: 'Projetos', href: '#projetos' },
-    { name: 'Contato', href: '#contato' },
+    { name: "Início", href: "#inicio" },
+    { name: "Sobre", href: "#sobre" },
+    { name: "Projetos", href: "#projetos" },
+    { name: "Contato", href: "#contato" },
   ];
 
   return (
@@ -20,9 +21,14 @@ export function Header() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-xl font-bold text-primary">
-              Bruno
-            </h1>
+            <Image
+              src="/image/headerBruno.png"
+              alt="Bruno"
+              width={120}
+              height={32}
+              className="h-8 w-auto"
+              priority
+            />
           </div>
 
           {/* Desktop Navigation */}
@@ -41,7 +47,7 @@ export function Header() {
           {/* Theme Toggle & Mobile Menu Button */}
           <div className="flex items-center space-x-4">
             <ThemeToggle />
-            
+
             {/* Mobile menu button */}
             <button
               className="md:hidden p-2 rounded-lg bg-secondary hover:bg-tertiary transition-colors duration-200"
