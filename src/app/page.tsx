@@ -56,14 +56,14 @@ export default function Home() {
                   {/* Main Title */}
                   <div className="space-y-4">
                     <h1 className="text-4xl md:text-6xl font-bold text-primary leading-tight">
-                      Hello I&apos;m
+                      Olá, eu sou o
                     </h1>
                     <h2 className="text-5xl md:text-7xl font-bold text-primary leading-tight">
                       Bruno Gonçalves
                     </h2>
                     <div className="flex items-center space-x-2">
                       <TypewriterText 
-                        texts={["Front-End Developer", "Full-Stack Developer", "Web Developer", "Desenvolvedor"]}
+                        texts={["Desenvolvedor Full Stack", "Desenvolvedor Web"]}
                         className="text-4xl md:text-6xl font-bold accent-primary"
                         speed={100}
                         pauseTime={2500}
@@ -73,14 +73,48 @@ export default function Home() {
 
                   {/* Technology Tags */}
                   <div className="flex flex-wrap gap-4 mt-8">
-                    {['HTML', 'CSS', 'JavaScript', 'React', 'MySQL', 'PHP'].map((tech) => (
+                    {['PHP', 'Laravel', 'Node.js', 'JavaScript', 'TypeScript', 'React.js', 'Next.js', 'HTML5', 'CSS3', 'Bootstrap', 'Tailwind', 'MySQL', 'Supabase', 'APIs REST', 'Git & GitHub'].map((tech) => (
                       <span
                         key={tech}
-                        className="px-6 py-3 border-2 border-accent-primary rounded-full text-primary text-sm font-medium hover:bg-accent-primary/10 transition-colors duration-200"
+                        className="px-6 py-3 rounded-full text-sm font-medium transition-colors duration-200"
+                        style={{ 
+                          backgroundColor: 'rgba(40, 169, 224, 0.25)',
+                          color: '#8DDDFF'
+                        }}
                       >
                         {tech}
                       </span>
                     ))}
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="flex flex-col sm:flex-row gap-4 mt-8">
+                    <a
+                      href="/documents/curriculo-bruno.pdf"
+                      download="Bruno-Goncalves-Curriculo.pdf"
+                      className="inline-flex items-center justify-center px-8 py-4 font-medium transition-all duration-200 hover:scale-105"
+                      style={{ 
+                        backgroundColor: '#D6D6D6', 
+                        color: '#000000',
+                        borderRadius: '3.40282e38px'
+                      }}
+                    >
+                      Download CV
+                      <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                    </a>
+                    <a
+                      href="https://wa.me/5511999999999"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center text-accent-primary hover:text-accent-secondary transition-colors duration-200 font-medium"
+                    >
+                      <svg className="mr-2 h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-1.013-2.03-1.178-.273-.165-.471-.249-.67.249-.197.498-.767 1.178-1.04 1.42-.273.243-.54.27-.999.09-.46-.18-1.94-.716-3.69-2.28-1.35-1.2-2.26-2.68-2.52-3.13-.26-.45-.03-.69.195-.91.2-.2.45-.52.675-.78.225-.26.3-.43.45-.71.15-.28.075-.52-.037-.72-.112-.2-.99-2.38-1.36-3.26-.14-.35-.28-.5-.61-.5H5.1c-.18 0-.45.08-.675.33-.225.25-.87.85-.87 2.07 0 1.22.89 2.4.99 2.56.11.16 1.54 2.33 3.73 3.5 3.25 1.75 3.58 1.4 4.23 1.31.65-.09 2.09-.85 2.38-1.67.3-.82.3-1.52.21-1.67-.09-.15-.33-.24-.7-.44z"/>
+                      </svg>
+                      Vamos conversar
+                    </a>
                   </div>
               </div>
 
