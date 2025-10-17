@@ -1,103 +1,229 @@
-import Image from "next/image";
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
+import { ExternalLink, Github, Linkedin, Mail, Code, Database, Globe } from 'lucide-react';
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const projects = [
+    {
+      title: 'E-commerce Platform',
+      description: 'Plataforma completa de e-commerce com React, Node.js e PostgreSQL',
+      technologies: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
+      link: 'https://github.com/bruno/ecommerce',
+      status: 'Concluído',
+    },
+    {
+      title: 'Sistema de Gestão',
+      description: 'Sistema de gestão empresarial com dashboard interativo e relatórios',
+      technologies: ['Next.js', 'TypeScript', 'Prisma', 'MySQL'],
+      link: 'https://github.com/bruno/gestao-sistema',
+      status: 'Em desenvolvimento',
+    },
+    {
+      title: 'API RESTful',
+      description: 'API robusta para gerenciamento de usuários e autenticação JWT',
+      technologies: ['Express.js', 'MongoDB', 'JWT', 'Docker'],
+      link: 'https://github.com/bruno/api-restful',
+      status: 'Concluído',
+    },
+    {
+      title: 'App Mobile',
+      description: 'Aplicativo mobile para delivery com React Native e Firebase',
+      technologies: ['React Native', 'Firebase', 'Redux', 'Expo'],
+      link: 'https://github.com/bruno/delivery-app',
+      status: 'Em desenvolvimento',
+    },
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+  const skills = [
+    { name: 'Frontend', icon: Code, technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'] },
+    { name: 'Backend', icon: Database, technologies: ['Node.js', 'Express', 'Python', 'FastAPI'] },
+    { name: 'DevOps', icon: Globe, technologies: ['Docker', 'AWS', 'Vercel', 'GitHub Actions'] },
+  ];
+
+  return (
+    <div className="min-h-screen bg-primary">
+      <Header />
+      
+      <main>
+        {/* Hero Section */}
+        <section id="inicio" className="py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center">
+              <h1 className="text-4xl md:text-6xl font-bold text-primary mb-6">
+                Olá, eu sou{' '}
+                <span className="accent-primary">Bruno</span>
+              </h1>
+              <p className="text-xl md:text-2xl text-secondary mb-8 max-w-3xl mx-auto">
+                Desenvolvedor Full Stack apaixonado por criar soluções inovadoras e eficientes
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                  href="#projetos"
+                  className="px-8 py-3 bg-accent-primary text-white rounded-lg hover:bg-accent-secondary transition-colors duration-200 font-medium"
+                >
+                  Ver Projetos
+                </a>
+                <a
+                  href="#contato"
+                  className="px-8 py-3 border border-theme text-primary rounded-lg hover:bg-secondary transition-colors duration-200 font-medium"
+                >
+                  Entrar em Contato
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* About Section */}
+        <section id="sobre" className="py-20 bg-secondary">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+                Sobre Mim
+              </h2>
+              <p className="text-lg text-secondary max-w-3xl mx-auto">
+                Desenvolvedor com mais de 3 anos de experiência criando soluções web e mobile.
+                Especializado em tecnologias modernas e sempre em busca de novos desafios.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {skills.map((skill) => {
+                const Icon = skill.icon;
+                return (
+                  <div
+                    key={skill.name}
+                    className="bg-primary p-6 rounded-lg shadow-theme-md hover:shadow-theme-lg transition-shadow duration-200"
+                  >
+                    <div className="flex items-center mb-4">
+                      <Icon className="h-8 w-8 accent-primary mr-3" />
+                      <h3 className="text-xl font-semibold text-primary">
+                        {skill.name}
+                      </h3>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {skill.technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-3 py-1 bg-tertiary text-primary text-sm rounded-full"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Projects Section */}
+        <section id="projetos" className="py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+                Meus Projetos
+              </h2>
+              <p className="text-lg text-secondary max-w-3xl mx-auto">
+                Alguns dos projetos que desenvolvi para demonstrar minhas habilidades e experiência.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+              {projects.map((project, index) => (
+                <div
+                  key={index}
+                  className="bg-secondary p-6 rounded-lg shadow-theme-md hover:shadow-theme-lg transition-all duration-200 group"
+                >
+                  <div className="flex justify-between items-start mb-4">
+                    <h3 className="text-xl font-semibold text-primary group-hover:accent-primary transition-colors duration-200">
+                      {project.title}
+                    </h3>
+                    <span
+                      className={`px-3 py-1 rounded-full text-xs font-medium ${
+                        project.status === 'Concluído'
+                          ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+                          : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
+                      }`}
+                    >
+                      {project.status}
+                    </span>
+                  </div>
+                  
+                  <p className="text-secondary mb-4">
+                    {project.description}
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-1 bg-tertiary text-primary text-xs rounded"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-accent-primary hover:text-accent-secondary transition-colors duration-200 font-medium"
+                  >
+                    Ver no GitHub
+                    <ExternalLink className="ml-2 h-4 w-4" />
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Section */}
+        <section id="contato" className="py-20 bg-secondary">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+              Vamos Trabalhar Juntos?
+            </h2>
+            <p className="text-lg text-secondary mb-8">
+              Estou sempre aberto a novas oportunidades e projetos interessantes.
+              Entre em contato comigo!
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="mailto:bruno@email.com"
+                className="inline-flex items-center px-6 py-3 bg-accent-primary text-white rounded-lg hover:bg-accent-secondary transition-colors duration-200 font-medium"
+              >
+                <Mail className="mr-2 h-5 w-5" />
+                Enviar Email
+              </a>
+              <a
+                href="https://linkedin.com/in/bruno"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-6 py-3 border border-theme text-primary rounded-lg hover:bg-primary transition-colors duration-200 font-medium"
+              >
+                <Linkedin className="mr-2 h-5 w-5" />
+                LinkedIn
+              </a>
+              <a
+                href="https://github.com/bruno"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-6 py-3 border border-theme text-primary rounded-lg hover:bg-primary transition-colors duration-200 font-medium"
+              >
+                <Github className="mr-2 h-5 w-5" />
+                GitHub
+              </a>
+            </div>
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+      <Footer />
     </div>
   );
 }
