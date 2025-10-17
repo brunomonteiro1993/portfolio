@@ -31,26 +31,27 @@ export function Header() {
             />
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
-            {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-secondary hover:text-primary transition-colors duration-200 font-medium"
-              >
-                {item.name}
-              </a>
-            ))}
-          </nav>
-
-          {/* Theme Toggle & Mobile Menu Button */}
-          <div className="flex items-center space-x-4">
+          {/* Desktop Navigation & Theme Toggle */}
+          <div className="hidden md:flex items-center space-x-8">
+            <nav className="flex space-x-8">
+              {navigation.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="text-secondary hover:text-primary transition-colors duration-200 font-medium"
+                >
+                  {item.name}
+                </a>
+              ))}
+            </nav>
             <ThemeToggle />
+          </div>
 
-            {/* Mobile menu button */}
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex items-center space-x-4">
+            <ThemeToggle />
             <button
-              className="md:hidden p-2 rounded-lg bg-secondary hover:bg-tertiary transition-colors duration-200"
+              className="p-2 rounded-lg bg-secondary hover:bg-tertiary transition-colors duration-200"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Abrir menu"
             >
