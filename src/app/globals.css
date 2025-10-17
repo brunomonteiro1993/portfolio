@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8fafc;
+  --foreground: #000000;
 }
 
 @theme inline {
@@ -14,13 +14,27 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: linear-gradient(135deg, #000000 0%, #090E16 52%, #0B172C 92%);
     --foreground: #ededed;
   }
 }
 
 body {
   background: var(--background);
+  background-attachment: fixed;
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+}
+
+/* Forçar modo light quando não estiver em dark */
+:root:not(.dark) body {
+  background: #f8fafc !important;
+  background-attachment: fixed;
+  color: #000000 !important;
+}
+
+/* Forçar textos pretos no modo light */
+:root:not(.dark) * {
+  color: #000000 !important;
 }
