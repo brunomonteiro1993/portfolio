@@ -140,6 +140,33 @@ html, body {
   backdrop-filter: blur(5px);
 }
 
+/* Circuit pattern background for hero section */
+.hero-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(90deg, transparent 98%, rgba(59, 130, 246, 0.1) 100%),
+    linear-gradient(0deg, transparent 98%, rgba(59, 130, 246, 0.1) 100%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-bg > * {
+  position: relative;
+  z-index: 1;
+}
+
 /* Scrollbar personalizada */
 ::-webkit-scrollbar {
   width: 8px;
