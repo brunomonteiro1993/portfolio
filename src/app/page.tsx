@@ -90,7 +90,8 @@ export default function Home() {
                   {/* Action Buttons */}
                   <div className="flex flex-col sm:flex-row gap-4 mt-8">
                     <a
-                      href="#contato"
+                      href="/documents/curriculo-bruno.pdf"
+                      download="Bruno-Goncalves-Curriculo.pdf"
                       className="inline-flex items-center justify-center px-8 py-4 font-medium transition-all duration-200 hover:scale-105"
                       style={{ 
                         backgroundColor: '#D6D6D6', 
