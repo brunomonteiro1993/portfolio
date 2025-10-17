@@ -105,14 +105,18 @@ export default function Home() {
                       </svg>
                     </a>
                     <a
-                      href="https://wa.me/5511999999999"
+                      href="https://wa.me/5521980109064"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center text-accent-primary hover:text-accent-secondary transition-colors duration-200 font-medium"
                     >
-                      <svg className="mr-2 h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M17.472 14.382c-.297-.149-1.758-1.013-2.03-1.178-.273-.165-.471-.249-.67.249-.197.498-.767 1.178-1.04 1.42-.273.243-.54.27-.999.09-.46-.18-1.94-.716-3.69-2.28-1.35-1.2-2.26-2.68-2.52-3.13-.26-.45-.03-.69.195-.91.2-.2.45-.52.675-.78.225-.26.3-.43.45-.71.15-.28.075-.52-.037-.72-.112-.2-.99-2.38-1.36-3.26-.14-.35-.28-.5-.61-.5H5.1c-.18 0-.45.08-.675.33-.225.25-.87.85-.87 2.07 0 1.22.89 2.4.99 2.56.11.16 1.54 2.33 3.73 3.5 3.25 1.75 3.58 1.4 4.23 1.31.65-.09 2.09-.85 2.38-1.67.3-.82.3-1.52.21-1.67-.09-.15-.33-.24-.7-.44z"/>
-                      </svg>
+                      <Image
+                        src="/image/iconZap.png"
+                        alt="WhatsApp"
+                        width={24}
+                        height={24}
+                        className="mr-2"
+                      />
                       Vamos conversar
                     </a>
                   </div>
