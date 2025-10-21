@@ -1,0 +1,20 @@
+/* Hero Section - Technology Tags */
+.tech-tag {
+  background-color: rgba(40, 169, 224, 0.25);
+  color: #8DDDFF;
+}
+
+/* Download CV Button */
+.download-cv-button {
+  background-color: #D6D6D6;
+  color: #000000;
+  border-radius: 3.40282e38px;
+}
+
+/* About Section - Border Solid */
+.bordaSolid {
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 0 20px rgb(68 99 217 / 15%);;
+}
+
