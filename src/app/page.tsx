@@ -1,125 +1,170 @@
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
-import { ExternalLink, Github, Linkedin, Mail, Code, Database, Globe } from 'lucide-react';
-import Image from 'next/image';
-import { TypewriterText } from '@/components/TypewriterText';
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import {
+  ExternalLink,
+  Github,
+  Linkedin,
+  Mail,
+  Code,
+  Database,
+  Globe,
+} from "lucide-react";
+import Image from "next/image";
+import { TypewriterText } from "@/components/TypewriterText";
+import "./page.css";
 
 export default function Home() {
   const projects = [
     {
-      title: 'E-commerce Platform',
-      description: 'Plataforma completa de e-commerce com React, Node.js e PostgreSQL',
-      technologies: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
-      link: 'https://github.com/bruno/ecommerce',
-      status: 'Concluído',
+      title: "E-commerce Platform",
+      description:
+        "Plataforma completa de e-commerce com React, Node.js e PostgreSQL",
+      technologies: ["React", "Node.js", "PostgreSQL", "Stripe"],
+      link: "https://github.com/bruno/ecommerce",
+      status: "Concluído",
     },
     {
-      title: 'Sistema de Gestão',
-      description: 'Sistema de gestão empresarial com dashboard interativo e relatórios',
-      technologies: ['Next.js', 'TypeScript', 'Prisma', 'MySQL'],
-      link: 'https://github.com/bruno/gestao-sistema',
-      status: 'Em desenvolvimento',
+      title: "Sistema de Gestão",
+      description:
+        "Sistema de gestão empresarial com dashboard interativo e relatórios",
+      technologies: ["Next.js", "TypeScript", "Prisma", "MySQL"],
+      link: "https://github.com/bruno/gestao-sistema",
+      status: "Em desenvolvimento",
     },
     {
-      title: 'API RESTful',
-      description: 'API robusta para gerenciamento de usuários e autenticação JWT',
-      technologies: ['Express.js', 'MongoDB', 'JWT', 'Docker'],
-      link: 'https://github.com/bruno/api-restful',
-      status: 'Concluído',
+      title: "API RESTful",
+      description:
+        "API robusta para gerenciamento de usuários e autenticação JWT",
+      technologies: ["Express.js", "MongoDB", "JWT", "Docker"],
+      link: "https://github.com/bruno/api-restful",
+      status: "Concluído",
     },
     {
-      title: 'App Mobile',
-      description: 'Aplicativo mobile para delivery com React Native e Firebase',
-      technologies: ['React Native', 'Firebase', 'Redux', 'Expo'],
-      link: 'https://github.com/bruno/delivery-app',
-      status: 'Em desenvolvimento',
+      title: "App Mobile",
+      description:
+        "Aplicativo mobile para delivery com React Native e Firebase",
+      technologies: ["React Native", "Firebase", "Redux", "Expo"],
+      link: "https://github.com/bruno/delivery-app",
+      status: "Em desenvolvimento",
     },
   ];
 
   const skills = [
-    { name: 'Frontend', icon: Code, technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'] },
-    { name: 'Backend', icon: Database, technologies: ['Node.js', 'Express', 'Python', 'FastAPI'] },
-    { name: 'DevOps', icon: Globe, technologies: ['Docker', 'AWS', 'Vercel', 'GitHub Actions'] },
+    {
+      name: "Frontend",
+      icon: Code,
+      technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+    },
+    {
+      name: "Backend",
+      icon: Database,
+      technologies: ["Node.js", "Express", "Python", "FastAPI"],
+    },
+    {
+      name: "DevOps",
+      icon: Globe,
+      technologies: ["Docker", "AWS", "Vercel", "GitHub Actions"],
+    },
   ];
 
   return (
     <div className="min-h-screen bg-primary">
       <Header />
-      
+
       <main>
         {/* Hero Section */}
-        <section id="inicio" className="hero-bg py-20 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center">
+        <section
+          id="inicio"
+          className="hero-bg py-20 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center"
+        >
           <div className="max-w-7xl mx-auto w-full">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               {/* Left Side - Text Content */}
               <div className="space-y-8">
-                  {/* Main Title */}
-                  <div className="space-y-4">
-                    <h1 className="text-4xl md:text-6xl font-bold text-primary leading-tight">
-                      Olá, eu sou o
-                    </h1>
-                    <h2 className="text-5xl md:text-7xl font-bold text-primary leading-tight">
-                      Bruno Gonçalves
-                    </h2>
-                    <div className="flex items-center space-x-2">
-                      <TypewriterText 
-                        texts={["Desenvolvedor Full Stack", "Desenvolvedor Web"]}
-                        className="text-4xl md:text-6xl font-bold accent-primary"
-                        speed={100}
-                        pauseTime={2500}
-                      />
-                    </div>
+                {/* Main Title */}
+                <div className="space-y-4">
+                  <h1 className="text-4xl md:text-6xl font-bold text-primary leading-tight">
+                    Olá, eu sou o
+                  </h1>
+                  <h2 className="text-5xl md:text-7xl font-bold text-primary leading-tight">
+                    Bruno Gonçalves
+                  </h2>
+                  <div className="flex items-center space-x-2">
+                    <TypewriterText
+                      texts={["Desenvolvedor Full Stack", "Desenvolvedor Web"]}
+                      className="text-4xl md:text-6xl font-bold accent-primary"
+                      speed={100}
+                      pauseTime={2500}
+                    />
                   </div>
+                </div>
 
-                  {/* Technology Tags */}
-                  <div className="flex flex-wrap gap-4 mt-8">
-                    {['PHP', 'Laravel', 'Node.js', 'JavaScript', 'TypeScript', 'React.js', 'Next.js', 'HTML5', 'CSS3', 'Bootstrap', 'Tailwind', 'MySQL', 'Supabase', 'APIs REST', 'Git & GitHub'].map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-6 py-3 rounded-full text-sm font-medium transition-colors duration-200"
-                        style={{ 
-                          backgroundColor: 'rgba(40, 169, 224, 0.25)',
-                          color: '#8DDDFF'
-                        }}
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                {/* Technology Tags */}
+                <div className="flex flex-wrap gap-4 mt-8">
+                  {[
+                    "PHP",
+                    "Laravel",
+                    "Node.js",
+                    "JavaScript",
+                    "TypeScript",
+                    "React.js",
+                    "Next.js",
+                    "HTML5",
+                    "CSS3",
+                    "Bootstrap",
+                    "Tailwind",
+                    "MySQL",
+                    "Supabase",
+                    "APIs REST",
+                    "Git & GitHub",
+                  ].map((tech) => (
+                    <span
+                      key={tech}
+                      className="tech-tag px-6 py-3 rounded-full text-sm font-medium transition-colors duration-200"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
 
-                  {/* Action Buttons */}
-                  <div className="flex flex-col sm:flex-row gap-4 mt-8">
-                    <a
-                      href="/documents/curriculo-bruno.pdf"
-                      download="Bruno-Goncalves-Curriculo.pdf"
-                      className="inline-flex items-center justify-center px-8 py-4 font-medium transition-all duration-200 hover:scale-105"
-                      style={{ 
-                        backgroundColor: '#D6D6D6', 
-                        color: '#000000',
-                        borderRadius: '3.40282e38px'
-                      }}
+                {/* Action Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4 mt-8">
+                  <a
+                    href="/documents/curriculo-bruno.pdf"
+                    download="Bruno-Goncalves-Curriculo.pdf"
+                    className="download-cv-button inline-flex items-center justify-center px-8 py-4 font-medium transition-all duration-200 hover:scale-105"
+                  >
+                    Download CV
+                    <svg
+                      className="ml-2 h-5 w-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
                     >
-                      Download CV
-                      <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                      </svg>
-                    </a>
-                    <a
-                      href="https://wa.me/5521980109064"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center text-accent-primary hover:text-accent-secondary transition-colors duration-200 font-medium"
-                    >
-                      <Image
-                        src="/image/iconZap.png"
-                        alt="WhatsApp"
-                        width={24}
-                        height={24}
-                        className="mr-2"
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                       />
-                      Vamos conversar
-                    </a>
-                  </div>
+                    </svg>
+                  </a>
+                  <a
+                    href="https://wa.me/5521980109064"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-accent-primary hover:text-accent-secondary transition-colors duration-200 font-medium"
+                  >
+                    <Image
+                      src="/image/iconZap.png"
+                      alt="WhatsApp"
+                      width={24}
+                      height={24}
+                      className="mr-2"
+                    />
+                    Vamos conversar
+                  </a>
+                </div>
               </div>
 
               {/* Right Side - Profile Image */}
@@ -138,17 +183,53 @@ export default function Home() {
         {/* About Section */}
         <section id="sobre" className="py-20 bg-secondary">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-                Sobre Mim
-              </h2>
-              <p className="text-lg text-secondary max-w-3xl mx-auto">
-                Desenvolvedor com mais de 3 anos de experiência criando soluções web e mobile.
-                Especializado em tecnologias modernas e sempre em busca de novos desafios.
-              </p>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+              {/* Left Side - Image */}
+              <div className="flex justify-center lg:justify-start">
+                <div className="w-full max-w-md">
+                  <Image
+                    src="/image/sobreMin.png"
+                    alt="Desenvolvedor trabalhando"
+                    width={600}
+                    height={600}
+                    className="rounded-lg"
+                  />
+                </div>
+              </div>
+
+              {/* Right Side - About Content */}
+              <div className="space-y-6">
+                <div>
+                  <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+                    Sobre Mim
+                  </h2>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="bordaSolid">
+                    <p className="text-secondary">OLÁ!</p>
+                    <p className="text-secondary">
+                      Meu nome é Bruno Gonçalves.
+                    </p>
+                    <p className="text-secondary">
+                      Graduado em Análise e Desenvolvimento de Sistemas e em
+                      Banco de Dados. Desenvolvedor Web Full Stack com foco no
+                      desenvolvimento de aplicações web. Tenho experiência em
+                      Next.js e React no front-end, e Node.js, PHP e Laravel no
+                      back-end. Trabalho com MySQL, Supabase e phpMyAdmin para
+                      integração e manutenção de bancos de dados. Além disso,
+                      possuo experiência na integração e consumo de APIs REST,
+                      como a Pluggy API e a API do Banco Inter Empresas,
+                      garantindo conectividade e comunicação eficiente entre
+                      sistemas.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Skills Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
               {skills.map((skill) => {
                 const Icon = skill.icon;
                 return (
@@ -187,7 +268,8 @@ export default function Home() {
                 Meus Projetos
               </h2>
               <p className="text-lg text-secondary max-w-3xl mx-auto">
-                Alguns dos projetos que desenvolvi para demonstrar minhas habilidades e experiência.
+                Alguns dos projetos que desenvolvi para demonstrar minhas
+                habilidades e experiência.
               </p>
             </div>
 
@@ -203,19 +285,17 @@ export default function Home() {
                     </h3>
                     <span
                       className={`px-3 py-1 rounded-full text-xs font-medium ${
-                        project.status === 'Concluído'
-                          ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
-                          : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
+                        project.status === "Concluído"
+                          ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
+                          : "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200"
                       }`}
                     >
                       {project.status}
                     </span>
                   </div>
-                  
-                  <p className="text-secondary mb-4">
-                    {project.description}
-                  </p>
-                  
+
+                  <p className="text-secondary mb-4">{project.description}</p>
+
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.technologies.map((tech) => (
                       <span
@@ -226,7 +306,7 @@ export default function Home() {
                       </span>
                     ))}
                   </div>
-                  
+
                   <a
                     href={project.link}
                     target="_blank"
@@ -249,10 +329,10 @@ export default function Home() {
               Vamos Trabalhar Juntos?
             </h2>
             <p className="text-lg text-secondary mb-8">
-              Estou sempre aberto a novas oportunidades e projetos interessantes.
-              Entre em contato comigo!
+              Estou sempre aberto a novas oportunidades e projetos
+              interessantes. Entre em contato comigo!
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="mailto:bruno@email.com"
