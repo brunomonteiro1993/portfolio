@@ -1,10 +1,5 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import {
-  Github,
-  Linkedin,
-  Mail,
-} from "lucide-react";
 import Image from "next/image";
 import { TypewriterText } from "@/components/TypewriterText";
 import "./page.css";
@@ -317,41 +312,87 @@ export default function Home() {
         </section>
 
         {/* Contact Section */}
-        <section id="contato" className="py-20 bg-secondary">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-              Vamos Trabalhar Juntos?
-            </h2>
-            <p className="text-lg text-secondary mb-8">
-              Estou sempre aberto a novas oportunidades e projetos
-              interessantes. Entre em contato comigo!
-            </p>
+        <section id="contato" className="py-20">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-accent-primary mb-4">
+                Contacts
+              </h2>
+            </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
+              {/* Email Card */}
               <a
                 href="mailto:brunogoncalvesmonteiro@gmail.com"
-                className="inline-flex items-center px-6 py-3 bg-accent-primary text-white rounded-lg hover:bg-accent-secondary transition-colors duration-200 font-medium"
+                className="contact-card flex flex-col items-center text-center group"
               >
-                <Mail className="mr-2 h-5 w-5" />
-                Enviar Email
+                <div className="contact-icon-circle mb-4">
+                  <Image
+                    src="/svg/email.svg"
+                    alt="Email"
+                    width={32}
+                    height={32}
+                  />
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2">E-mail</h3>
+                <p className="text-sm text-secondary">brunogoncalvesmonteiro@gmail.com</p>
               </a>
-              <a
-                href="https://www.linkedin.com/in/brunogonçalves-"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center px-6 py-3 border border-theme text-primary rounded-lg hover:bg-primary transition-colors duration-200 font-medium"
-              >
-                <Linkedin className="mr-2 h-5 w-5" />
-                LinkedIn
-              </a>
+
+              {/* GitHub Card */}
               <a
                 href="https://github.com/brunomonteiro1993"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-6 py-3 border border-theme text-primary rounded-lg hover:bg-primary transition-colors duration-200 font-medium"
+                className="contact-card flex flex-col items-center text-center group"
               >
-                <Github className="mr-2 h-5 w-5" />
-                GitHub
+                <div className="contact-icon-circle mb-4">
+                  <Image
+                    src="/svg/github.svg"
+                    alt="GitHub"
+                    width={32}
+                    height={32}
+                  />
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2">GitHub</h3>
+                <p className="text-sm text-secondary">@brunomonteiro1993</p>
+              </a>
+
+              {/* LinkedIn Card */}
+              <a
+                href="https://www.linkedin.com/in/brunogonçalves-"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-card flex flex-col items-center text-center group"
+              >
+                <div className="contact-icon-circle mb-4">
+                  <Image
+                    src="/svg/linkedin.svg"
+                    alt="LinkedIn"
+                    width={32}
+                    height={32}
+                  />
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2">LinkedIn</h3>
+                <p className="text-sm text-secondary">@brunogonçalves-</p>
+              </a>
+
+              {/* WhatsApp Card */}
+              <a
+                href="https://wa.me/5521980109064"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-card flex flex-col items-center text-center group"
+              >
+                <div className="contact-icon-circle mb-4">
+                  <Image
+                    src="/svg/whatsapp.svg"
+                    alt="WhatsApp"
+                    width={32}
+                    height={32}
+                  />
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2">WhatsApp</h3>
+                <p className="text-sm text-secondary">21 98010-9064</p>
               </a>
             </div>
           </div>
