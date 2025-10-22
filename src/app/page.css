@@ -32,9 +32,39 @@
 
 .skill-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(32, 140, 252, 0.3);
 }
 
 h2 {
   color: #208CFC;
+}
+
+/* Experience and Training Section */
+.experience-card,
+.certification-card {
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(68, 99, 217, .15);
+  backdrop-filter: blur(10px);
+}
+
+.experience-card:hover,
+.certification-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(32, 140, 252, 0.3);
+}
+
+/* Period text style */
+.period-text {
+  color: #00D9FF;
+}
+
+/* Institution/Platform text */
+.platform-text {
+  color: #A0A0A0;
+}
+
+/* Technology tags */
+.tech-tag-card {
+  background-color: #1A1A2E;
 }
 

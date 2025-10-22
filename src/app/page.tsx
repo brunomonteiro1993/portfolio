@@ -1,7 +1,6 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import {
-  ExternalLink,
   Github,
   Linkedin,
   Mail,
@@ -11,38 +10,37 @@ import { TypewriterText } from "@/components/TypewriterText";
 import "./page.css";
 
 export default function Home() {
-  const projects = [
+  const experiences = [
     {
-      title: "E-commerce Platform",
-      description:
-        "Plataforma completa de e-commerce com React, Node.js e PostgreSQL",
-      technologies: ["React", "Node.js", "PostgreSQL", "Stripe"],
-      link: "https://github.com/bruno/ecommerce",
-      status: "Concluído",
+      period: "NOV/2022 — FEV/2025",
+      title: "Web Developer",
+      institution: "PRODERJ - Center for Information and Communication Technology of the State of Rio de Janeiro",
+      description: "Responsible for the development and maintenance of web systems for government agencies, ensuring efficiency and security in the provision of public services, as well as implementing new features and improving existing systems using modern technologies and best development practices.",
+      technologies: ["JavaScript", "HTML", "CSS", "Bootstrap", "React", "Laravel", "PHP", "MySQL", "VsCode", "GitHub"],
     },
     {
-      title: "Sistema de Gestão",
-      description:
-        "Sistema de gestão empresarial com dashboard interativo e relatórios",
-      technologies: ["Next.js", "TypeScript", "Prisma", "MySQL"],
-      link: "https://github.com/bruno/gestao-sistema",
-      status: "Em desenvolvimento",
+      period: "ABR/2023 — JUN/2025",
+      title: "Banco de Dados",
+      institution: "Universidade Estácio de Sá",
+      description: "A graduação em Banco de Dados na Estácio oferece uma formação para preparar e desenvolver, administrar e eliminar sistemas de armazenamento. Ira abordar desde as matérias mais básicas da área de TI, passando para a programação de sistemas. São abordadas a linguagem de dados, linguagens de consulta como SQL, administração de SGBD (sistema de Gerenciamento de Banco de Dados), análise de desempenho e segurança da informação.",
+      hours: "2400 HORAS",
+    },
+  ];
+
+  const certifications = [
+    {
+      period: "CONCLUÍDO EM 2025",
+      title: "Curso React do Zero a Maestria",
+      platform: "Plataforma Udemy",
+      description: "O curso React do Zero a Maestria da Udemy, abrange desde os fundamentos até tópicos avançados de React, com foco em hooks, gerenciamento de rotas com React Router e integrado com APIs REST. O conteúdo inclui o desenvolvimento de projetos completos, aplicando tecnologias modernas como Firebase para backend-as-a-service, Node.js para lógica de servidor e MongoDB como banco de dados NoSQL.",
+      hours: "36.5 HORAS",
     },
     {
-      title: "API RESTful",
-      description:
-        "API robusta para gerenciamento de usuários e autenticação JWT",
-      technologies: ["Express.js", "MongoDB", "JWT", "Docker"],
-      link: "https://github.com/bruno/api-restful",
-      status: "Concluído",
-    },
-    {
-      title: "App Mobile",
-      description:
-        "Aplicativo mobile para delivery com React Native e Firebase",
-      technologies: ["React Native", "Firebase", "Redux", "Expo"],
-      link: "https://github.com/bruno/delivery-app",
-      status: "Em desenvolvimento",
+      period: "CONCLUÍDO EM 2023",
+      title: "Curso Desenvolvimento Web Completo",
+      platform: "Plataforma Udemy",
+      description: "O curso de Desenvolvimento Web da Udemy oferece uma formação completa, abordando desde o front-end até o back-end e bancos de dados, com a criação de projetos práticos. Os principais tópicos incluem HTML, CSS, JavaScript, jQuery, Ajax, PHP, MySQL, React, arquitetura MVC, desenvolvimento de APIs e aplicações mobile conectadas a aplicações web utilizando a tecnologia Ionic.",
+      hours: "114.5 HORAS",
     },
   ];
 
@@ -254,64 +252,86 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Projects Section */}
-        <section id="projetos" className="py-20 bg-secondary">
+        {/* Experience and Training Section */}
+        <section id="experiencia" className="py-20 bg-secondary">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-                Meus Projetos
+              <h2 className="text-3xl md:text-4xl font-bold text-accent-primary mb-4">
+                Experiência e Treinamento
               </h2>
-              <p className="text-lg text-secondary max-w-3xl mx-auto">
-                Alguns dos projetos que desenvolvi para demonstrar minhas
-                habilidades e experiência.
-              </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-              {projects.map((project, index) => (
-                <div
-                  key={index}
-                  className="bg-secondary p-6 rounded-lg shadow-theme-md hover:shadow-theme-lg transition-all duration-200 group"
-                >
-                  <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-xl font-semibold text-primary group-hover:accent-primary transition-colors duration-200">
-                      {project.title}
-                    </h3>
-                    <span
-                      className={`px-3 py-1 rounded-full text-xs font-medium ${
-                        project.status === "Concluído"
-                          ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
-                          : "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200"
-                      }`}
-                    >
-                      {project.status}
-                    </span>
-                  </div>
-
-                  <p className="text-secondary mb-4">{project.description}</p>
-
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2 py-1 bg-tertiary text-primary text-xs rounded"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center text-accent-primary hover:text-accent-secondary transition-colors duration-200 font-medium"
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {/* Left Column - Experiences */}
+              <div className="space-y-6">
+                {experiences.map((exp, index) => (
+                  <div
+                    key={index}
+                    className="experience-card p-6 rounded-xl border border-accent-primary hover:shadow-theme-lg transition-all duration-200"
                   >
-                    Ver no GitHub
-                    <ExternalLink className="ml-2 h-4 w-4" />
-                  </a>
-                </div>
-              ))}
+                    <div className="period-text text-xs mb-3 uppercase tracking-wide font-semibold">
+                      {exp.period}
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-3">
+                      {exp.title}
+                    </h3>
+                    <p className="platform-text text-sm font-medium mb-4">
+                      {exp.institution}
+                    </p>
+                    <p className="text-white text-sm mb-5 leading-relaxed">
+                      {exp.description}
+                    </p>
+                    
+                    {exp.technologies && (
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {exp.technologies.map((tech) => (
+                          <span
+                            key={tech}
+                            className="tech-tag-card px-3 py-1 text-white text-xs rounded"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                    
+                    {exp.hours && (
+                      <div className="flex items-center text-white text-sm mt-4">
+                        <span className="mr-2">⏱</span>
+                        <span className="font-medium">{exp.hours}</span>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              {/* Right Column - Certifications */}
+              <div className="space-y-6">
+                {certifications.map((cert, index) => (
+                  <div
+                    key={index}
+                    className="certification-card p-6 rounded-xl border border-accent-primary hover:shadow-theme-lg transition-all duration-200"
+                  >
+                    <div className="period-text text-xs mb-3 uppercase tracking-wide font-semibold">
+                      {cert.period}
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-3">
+                      {cert.title}
+                    </h3>
+                    <p className="platform-text text-sm font-medium mb-4">
+                      {cert.platform}
+                    </p>
+                    <p className="text-white text-sm mb-5 leading-relaxed">
+                      {cert.description}
+                    </p>
+                    
+                    <div className="flex items-center text-white text-sm mt-4">
+                      <span className="mr-2">⏱</span>
+                      <span className="font-medium">{cert.hours}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
