@@ -261,13 +261,13 @@ export default function Home() {
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
               {/* Left Column - Experiences */}
               <div className="space-y-6">
                 {experiences.map((exp, index) => (
                   <div
                     key={index}
-                    className="experience-card p-6 rounded-xl border-accent-primary hover:shadow-theme-lg transition-all duration-200"
+                    className="experience-card p-6 rounded-xl hover:shadow-theme-lg transition-all duration-200"
                   >
                     <div className="period-text text-xs mb-3 uppercase tracking-wide font-semibold">
                       {exp.period}
@@ -310,7 +310,7 @@ export default function Home() {
                 {certifications.map((cert, index) => (
                   <div
                     key={index}
-                    className="certification-card p-6 rounded-xl  border-accent-primary hover:shadow-theme-lg transition-all duration-200"
+                    className="certification-card p-6 rounded-xl hover:shadow-theme-lg transition-all duration-200"
                   >
                     <div className="period-text text-xs mb-3 uppercase tracking-wide font-semibold">
                       {cert.period}
