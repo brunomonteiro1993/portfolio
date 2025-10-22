@@ -70,3 +70,29 @@ h2 {
   background-color: #1A1A2E;
 }
 
+/* Contact Section */
+.contact-card {
+  transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-10px);
+}
+
+.contact-icon-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: rgba(32, 140, 252, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.contact-card:hover .contact-icon-circle {
+  background-color: rgba(32, 140, 252, 0.2);
+  transform: scale(1.1);
+  box-shadow: 0 10px 30px rgba(32, 140, 252, 0.3);
+}
+
