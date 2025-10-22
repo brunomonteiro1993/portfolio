@@ -329,14 +329,14 @@ export default function Home() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="mailto:bruno@email.com"
+                href="mailto:brunogoncalvesmonteiro@gmail.com"
                 className="inline-flex items-center px-6 py-3 bg-accent-primary text-white rounded-lg hover:bg-accent-secondary transition-colors duration-200 font-medium"
               >
                 <Mail className="mr-2 h-5 w-5" />
                 Enviar Email
               </a>
               <a
-                href="https://linkedin.com/in/bruno"
+                href="https://www.linkedin.com/in/brunogonçalves-"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-6 py-3 border border-theme text-primary rounded-lg hover:bg-primary transition-colors duration-200 font-medium"
@@ -345,7 +345,7 @@ export default function Home() {
                 LinkedIn
               </a>
               <a
-                href="https://github.com/bruno"
+                href="https://github.com/brunomonteiro1993"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-6 py-3 border border-theme text-primary rounded-lg hover:bg-primary transition-colors duration-200 font-medium"
