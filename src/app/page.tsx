@@ -267,7 +267,7 @@ export default function Home() {
                 {experiences.map((exp, index) => (
                   <div
                     key={index}
-                    className="experience-card p-6 rounded-xl border border-accent-primary hover:shadow-theme-lg transition-all duration-200"
+                    className="experience-card p-6 rounded-xl border-accent-primary hover:shadow-theme-lg transition-all duration-200"
                   >
                     <div className="period-text text-xs mb-3 uppercase tracking-wide font-semibold">
                       {exp.period}
@@ -310,7 +310,7 @@ export default function Home() {
                 {certifications.map((cert, index) => (
                   <div
                     key={index}
-                    className="certification-card p-6 rounded-xl border border-accent-primary hover:shadow-theme-lg transition-all duration-200"
+                    className="certification-card p-6 rounded-xl  border-accent-primary hover:shadow-theme-lg transition-all duration-200"
                   >
                     <div className="period-text text-xs mb-3 uppercase tracking-wide font-semibold">
                       {cert.period}
