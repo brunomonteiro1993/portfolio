@@ -5,9 +5,6 @@ import {
   Github,
   Linkedin,
   Mail,
-  Code,
-  Database,
-  Globe,
 } from "lucide-react";
 import Image from "next/image";
 import { TypewriterText } from "@/components/TypewriterText";
@@ -46,24 +43,6 @@ export default function Home() {
       technologies: ["React Native", "Firebase", "Redux", "Expo"],
       link: "https://github.com/bruno/delivery-app",
       status: "Em desenvolvimento",
-    },
-  ];
-
-  const skills = [
-    {
-      name: "Frontend",
-      icon: Code,
-      technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
-    },
-    {
-      name: "Backend",
-      icon: Database,
-      technologies: ["Node.js", "Express", "Python", "FastAPI"],
-    },
-    {
-      name: "DevOps",
-      icon: Globe,
-      technologies: ["Docker", "AWS", "Vercel", "GitHub Actions"],
     },
   ];
 
@@ -132,7 +111,7 @@ export default function Home() {
                   <a
                     href="/documents/curriculo-bruno.pdf"
                     download="Bruno-Goncalves-Curriculo.pdf"
-                    className="download-cv-button inline-flex items-center justify-center px-8 py-4 font-medium transition-all duration-200 hover:scale-105"
+                    className="download-cv-button inline-flex items-center justify-center px-8 py-4 font-medium transition-all duration-200"
                   >
                     Download CV
                     <svg
@@ -228,40 +207,55 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Skills Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-              {skills.map((skill) => {
-                const Icon = skill.icon;
-                return (
-                  <div
-                    key={skill.name}
-                    className="bg-primary p-6 rounded-lg shadow-theme-md hover:shadow-theme-lg transition-shadow duration-200"
-                  >
-                    <div className="flex items-center mb-4">
-                      <Icon className="h-8 w-8 accent-primary mr-3" />
-                      <h3 className="text-xl font-semibold text-primary">
-                        {skill.name}
-                      </h3>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {skill.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-3 py-1 bg-tertiary text-primary text-sm rounded-full"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
+          </div>
+        </section>
+
+        {/* Skills Section */}
+        <section id="habilidades" className="py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+                Minhas Habilidades
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 justify-items-center max-w-5xl mx-auto">
+              {[
+                { name: 'HTML5', icon: '/image/html5.png' },
+                { name: 'CSS3', icon: '/image/css3.png' },
+                { name: 'JavaScript', icon: '/image/js.png' },
+                { name: 'Bootstrap', icon: '/image/bootstrap.png' },
+                { name: 'React.js', icon: '/image/react.png' },
+                { name: 'MySQL', icon: '/image/mySql.png' },
+                { name: 'Laravel', icon: '/image/laravel.png' },
+                { name: 'PHP', icon: '/image/php.png' },
+                { name: 'Git', icon: '/image/git.png' },
+                { name: 'VsCode', icon: '/image/vscode.png' },
+              ].map((skill) => (
+                <div
+                  key={skill.name}
+                  className="skill-card bg-primary p-4 rounded-lg  border-accent-primary hover:shadow-theme-lg transition-all duration-200 flex flex-col items-center justify-center text-center"
+                >
+                  <div className="mb-3 flex items-center justify-center">
+                    <Image
+                      src={skill.icon}
+                      alt={skill.name}
+                      width={64}
+                      height={64}
+                      className="object-contain"
+                    />
                   </div>
-                );
-              })}
+                  <h3 className="text-sm font-medium text-accent-primary">
+                    {skill.name}
+                  </h3>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
         {/* Projects Section */}
-        <section id="projetos" className="py-20">
+        <section id="projetos" className="py-20 bg-secondary">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">

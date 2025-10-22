@@ -11,10 +11,30 @@
   border-radius: 3.40282e38px;
 }
 
+.download-cv-button:hover {
+  transform: translateY(-5px);
+}
+
 /* About Section - Border Solid */
 .bordaSolid {
   border-radius: 12px;
   padding: 24px;
-  box-shadow: 0 0 20px rgb(68 99 217 / 15%);;
+  box-shadow: 0 0 20px rgb(68 99 217 / 15%);
+}
+
+/* Skills Section - Skill Cards */
+.skill-card {
+  width: 150px;
+  height: 150px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 0 20px rgb(68 99 217 / 15%);
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+}
+
+h2 {
+  color: #208CFC;
 }
 
