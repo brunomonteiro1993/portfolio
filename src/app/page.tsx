@@ -10,7 +10,14 @@ import { TypewriterText } from "@/components/TypewriterText";
 import "./page.css";
 
 export default function Home() {
-  const experiences = [
+  const experiencesAndTraining = [
+    {
+      period: "ABR/2025 — OUT/2025",
+      title: "Desenvolvedor Full Stack",
+      institution: "CF Contabilidade",
+      description: "Atualmente atuo no desenvolvimento de aplicações web com foco em sistemas de gerenciamento. No front-end, utilizo Next.js e React, enquanto no back-end trabalho com Node.js, PHP e Laravel. Também realizo integração e manutenção de bancos de dados com phpMyAdmin, MySQL e Supabase, assegurando eficiência e organização das informações. Além disso, desenvolvo e mantenho fluxos de automação de processos com n8n, otimizando tarefas repetitivas e aumentando a produtividade das operações. Minha rotina envolve desde a implementação de interfaces responsivas até a lógica de negócio e estruturação de dados, sempre alinhado a boas práticas de desenvolvimento. No dia a dia, utilizo Git/GitHub para versionamento e aplico metodologias ágeis, como Scrum e Kanban, para organizar e acompanhar as demandas de forma eficiente.",
+      technologies: ["Next.js", "React", "Node.js", "PHP", "Laravel", "phpMyAdmin", "MySQL", "Supabase", "n8n", "Git", "GitHub", "Scrum", "Kanban"],
+    },
     {
       period: "NOV/2022 — FEV/2025",
       title: "Web Developer",
@@ -19,16 +26,6 @@ export default function Home() {
       technologies: ["JavaScript", "HTML", "CSS", "Bootstrap", "React", "Laravel", "PHP", "MySQL", "VsCode", "GitHub"],
     },
     {
-      period: "ABR/2023 — JUN/2025",
-      title: "Banco de Dados",
-      institution: "Universidade Estácio de Sá",
-      description: "A graduação em Banco de Dados na Estácio oferece uma formação para preparar e desenvolver, administrar e eliminar sistemas de armazenamento. Ira abordar desde as matérias mais básicas da área de TI, passando para a programação de sistemas. São abordadas a linguagem de dados, linguagens de consulta como SQL, administração de SGBD (sistema de Gerenciamento de Banco de Dados), análise de desempenho e segurança da informação.",
-      hours: "2400 HORAS",
-    },
-  ];
-
-  const certifications = [
-    {
       period: "CONCLUÍDO EM 2025",
       title: "Curso React do Zero a Maestria",
       platform: "Plataforma Udemy",
@@ -36,11 +33,25 @@ export default function Home() {
       hours: "36.5 HORAS",
     },
     {
+      period: "ABR/2023 — JUN/2025",
+      title: "Banco de Dados",
+      institution: "Universidade Estácio de Sá",
+      description: "A graduação em Banco de Dados na Estácio oferece uma formação para preparar e desenvolver, administrar e eliminar sistemas de armazenamento. Ira abordar desde as matérias mais básicas da área de TI, passando para a programação de sistemas. São abordadas a linguagem de dados, linguagens de consulta como SQL, administração de SGBD (sistema de Gerenciamento de Banco de Dados), análise de desempenho e segurança da informação.",
+      hours: "2400 HORAS",
+    },
+    {
       period: "CONCLUÍDO EM 2023",
       title: "Curso Desenvolvimento Web Completo",
       platform: "Plataforma Udemy",
       description: "O curso de Desenvolvimento Web da Udemy oferece uma formação completa, abordando desde o front-end até o back-end e bancos de dados, com a criação de projetos práticos. Os principais tópicos incluem HTML, CSS, JavaScript, jQuery, Ajax, PHP, MySQL, React, arquitetura MVC, desenvolvimento de APIs e aplicações mobile conectadas a aplicações web utilizando a tecnologia Ionic.",
       hours: "114.5 HORAS",
+    },
+    {
+      period: "CONCLUSÃO: JUN/2023",
+      title: "Análise e Desenvolvimento de Sistemas",
+      institution: "Universidade Estácio de Sá",
+      description: "A graduação em Análise e Desenvolvimento de Sistemas forma profissionais capacitados para projetar, desenvolver e implementar sistemas computacionais. O curso aborda programação em diversas linguagens, engenharia de software, estrutura de dados, modelagem de sistemas, desenvolvimento web e mobile, gestão de projetos de TI e metodologias ágeis. Prepara o aluno para atuar em todas as fases do ciclo de vida de software, desde a análise de requisitos até a manutenção de sistemas.",
+      hours: "2400 HORAS",
     },
   ];
 
@@ -262,76 +273,45 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-              {/* Left Column - Experiences */}
-              <div className="space-y-6">
-                {experiences.map((exp, index) => (
-                  <div
-                    key={index}
-                    className="experience-card p-6 rounded-xl hover:shadow-theme-lg transition-all duration-200"
-                  >
-                    <div className="period-text text-xs mb-3 uppercase tracking-wide font-semibold">
-                      {exp.period}
-                    </div>
-                    <h3 className="text-xl font-bold text-white mb-3">
-                      {exp.title}
-                    </h3>
-                    <p className="platform-text text-sm font-medium mb-4">
-                      {exp.institution}
-                    </p>
-                    <p className="text-white text-sm mb-5 leading-relaxed">
-                      {exp.description}
-                    </p>
-                    
-                    {exp.technologies && (
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {exp.technologies.map((tech) => (
-                          <span
-                            key={tech}
-                            className="tech-tag-card px-3 py-1 text-white text-xs rounded"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                    
-                    {exp.hours && (
-                      <div className="flex items-center text-white text-sm mt-4">
-                        <span className="mr-2">⏱</span>
-                        <span className="font-medium">{exp.hours}</span>
-                      </div>
-                    )}
+              {experiencesAndTraining.map((item, index) => (
+                <div
+                  key={index}
+                  className="experience-card p-6 rounded-xl hover:shadow-theme-lg transition-all duration-200"
+                >
+                  <div className="period-text text-xs mb-3 uppercase tracking-wide font-semibold">
+                    {item.period}
                   </div>
-                ))}
-              </div>
-
-              {/* Right Column - Certifications */}
-              <div className="space-y-6">
-                {certifications.map((cert, index) => (
-                  <div
-                    key={index}
-                    className="certification-card p-6 rounded-xl hover:shadow-theme-lg transition-all duration-200"
-                  >
-                    <div className="period-text text-xs mb-3 uppercase tracking-wide font-semibold">
-                      {cert.period}
+                  <h3 className="text-xl font-bold text-white mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="platform-text text-sm font-medium mb-4">
+                    {item.institution || item.platform}
+                  </p>
+                  <p className="text-white text-sm mb-5 leading-relaxed">
+                    {item.description}
+                  </p>
+                  
+                  {item.technologies && (
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {item.technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          className="tech-tag-card px-3 py-1 text-white text-xs rounded"
+                        >
+                          {tech}
+                        </span>
+                      ))}
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-3">
-                      {cert.title}
-                    </h3>
-                    <p className="platform-text text-sm font-medium mb-4">
-                      {cert.platform}
-                    </p>
-                    <p className="text-white text-sm mb-5 leading-relaxed">
-                      {cert.description}
-                    </p>
-                    
+                  )}
+                  
+                  {item.hours && (
                     <div className="flex items-center text-white text-sm mt-4">
                       <span className="mr-2">⏱</span>
-                      <span className="font-medium">{cert.hours}</span>
+                      <span className="font-medium">{item.hours}</span>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         </section>
