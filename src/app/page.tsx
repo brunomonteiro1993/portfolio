@@ -91,16 +91,16 @@ export default function Home() {
               <div className="space-y-8">
                 {/* Main Title */}
                 <div className="space-y-4">
-                  <h1 className="text-4xl md:text-6xl font-bold text-primary leading-tight">
+                  <h5 className="text-4xl md:text-6xl font-bold text-primary leading-tight">
                     Olá, eu sou o
-                  </h1>
-                  <h2 className="text-5xl md:text-7xl font-bold text-primary leading-tight">
+                  </h5>
+                  <h5 className="h2-Nome text-5xl md:text-7xl font-bold text-primary leading-tight">
                     Bruno Gonçalves
-                  </h2>
-                  <div className="flex items-center space-x-2">
+                  </h5>
+                  <div className="desenvolvedor flex items-center space-x-2">
                     <TypewriterText
                       texts={["Desenvolvedor Full Stack", "Desenvolvedor Web"]}
-                      className="text-4xl md:text-6xl font-bold accent-primary"
+                      className="text-4xl md:text-5xl font-bold accent-primary"
                       speed={100}
                       pauseTime={2500}
                     />
@@ -161,7 +161,7 @@ export default function Home() {
                     href="https://wa.me/5521980109064"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center text-accent-primary hover:text-accent-secondary transition-colors duration-200 font-medium"
+                    className="conversar inline-flex items-center text-accent-primary hover:text-accent-secondary transition-colors duration-200 font-medium"
                   >
                     <Image
                       src="/image/iconZap.png"

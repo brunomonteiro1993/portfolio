@@ -1,12 +1,12 @@
 /* Hero Section - Technology Tags */
 .tech-tag {
   background-color: rgba(40, 169, 224, 0.25);
-  color: #8DDDFF;
+  color: #8dddff;
 }
 
 /* Download CV Button */
 .download-cv-button {
-  background-color: #D6D6D6;
+  background-color: #d6d6d6;
   color: #000000;
   border-radius: 3.40282e38px;
 }
@@ -35,14 +35,37 @@
   box-shadow: 0 10px 30px rgba(32, 140, 252, 0.3);
 }
 
+.h2-Nome {
+  color: #fff;
+}
+
 h2 {
-  color: #208CFC;
+  color: #4ca1f9;
+}
+
+.desenvolvedor {
+  color: #4ca1f9;
+}
+
+.conversar {
+  border-radius: 3.40282e38px;
+  width: 33%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(68, 99, 217, 0.15);
+}
+
+.conversar:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(32, 140, 252, 0.3);
 }
 
 /* Experience and Training Section */
 .experience-card {
   transition: all 0.3s ease;
-  box-shadow: 0 0 20px rgba(68, 99, 217, .15);
+  box-shadow: 0 0 20px rgba(68, 99, 217, 0.15);
   backdrop-filter: blur(10px);
   min-height: 380px;
   height: 100%;
@@ -57,17 +80,17 @@ h2 {
 
 /* Period text style */
 .period-text {
-  color: #00D9FF;
+  color: #00d9ff;
 }
 
 /* Institution/Platform text */
 .platform-text {
-  color: #A0A0A0;
+  color: #a0a0a0;
 }
 
 /* Technology tags */
 .tech-tag-card {
-  background-color: #1A1A2E;
+  background-color: #1a1a2e;
 }
 
 /* Contact Section */
@@ -83,7 +106,7 @@ h2 {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background-color:  rgba(40, 169, 224, .25);
+  background-color: rgba(40, 169, 224, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,7 +126,7 @@ h2 {
   right: 30px;
   width: 50px;
   height: 50px;
-  background-color: rgba(40, 169, 224, 0.25);;
+  background-color: rgba(40, 169, 224, 0.25);
   color: white;
   border: none;
   border-radius: 50%;
@@ -136,4 +159,3 @@ h2 {
     transform: translateY(0);
   }
 }
-
