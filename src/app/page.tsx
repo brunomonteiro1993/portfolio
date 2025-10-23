@@ -248,18 +248,30 @@ export default function Home() {
               </h2>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 justify-items-center max-w-5xl mx-auto">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 justify-items-center max-w-6xl mx-auto">
               {[
-                { name: 'HTML5', icon: '/image/html5.png' },
+                // Front-end
+                { name: 'HTML5', icon: '/image/hmtl5.png' },
                 { name: 'CSS3', icon: '/image/css3.png' },
                 { name: 'JavaScript', icon: '/image/js.png' },
+                { name: 'TypeScript', icon: '/image/typeScript.png' },
+                { name: 'React.js', icon: '/image/reactJs.png' },
+                { name: 'Next.js', icon: '/image/nextJs.png' },
                 { name: 'Bootstrap', icon: '/image/bootstrap.png' },
-                { name: 'React.js', icon: '/image/react.png' },
-                { name: 'MySQL', icon: '/image/mySql.png' },
-                { name: 'Laravel', icon: '/image/laravel.png' },
+                { name: 'Tailwind', icon: '/image/tailwind.png' },
+                // Back-end
+                { name: 'Node.js', icon: '/image/nodeJs.png' },
+                { name: 'Express.js', icon: '/image/expressJs.png' },
                 { name: 'PHP', icon: '/image/php.png' },
+                { name: 'Laravel', icon: '/image/laravel.png' },
+                { name: 'REST API', icon: '/image/reastApi.png' },
+                // Banco de Dados
+                { name: 'MySQL', icon: '/image/mysql.png' },
+                { name: 'Supabase', icon: '/image/supabase.png' },
+                // Ferramentas
                 { name: 'Git', icon: '/image/git.png' },
-                { name: 'VsCode', icon: '/image/vscode.png' },
+                { name: 'GitHub', icon: '/image/gitHub.png' },
+                { name: 'VsCode', icon: '/image/vsCode.png' },
               ].map((skill) => (
                 <div
                   key={skill.name}
