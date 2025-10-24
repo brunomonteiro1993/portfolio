@@ -261,7 +261,7 @@ export default function Home() {
                 { name: 'Tailwind', icon: '/image/tailwind.png' },
                 // Back-end
                 { name: 'Node.js', icon: '/image/nodeJs.png' },
-                { name: 'Express.js', icon: '/image/expressJs.png' },
+                { name: 'Express.js', icon: '/image/expresseJs.png' },
                 { name: 'PHP', icon: '/image/php.png' },
                 { name: 'Laravel', icon: '/image/laravel.png' },
                 { name: 'REST API', icon: '/image/reastApi.png' },
