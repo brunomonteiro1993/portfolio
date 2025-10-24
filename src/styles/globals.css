@@ -20,8 +20,8 @@
 }
 
 .dark {
-  /* Dark Theme com Gradiente */
-  --bg-primary: linear-gradient(135deg, #000000 0%, #090E16 52%, #0B172C 92%);
+  /* Dark Theme com cor sólida */
+  --bg-primary: #090E16;
   --bg-secondary: rgba(9, 14, 22, 0.9);
   --bg-tertiary: rgba(11, 23, 44, 0.7);
   --text-primary: #f8fafc;
@@ -117,14 +117,14 @@ body:not(.dark) .bg-primary {
   transition: background-color 0.3s ease, background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
-/* Garantir que o gradiente cubra toda a tela */
+/* Garantir que o background cubra toda a tela */
 html, body {
   min-height: 100vh;
 }
 
-/* Modo dark - gradiente */
+/* Modo dark - cor sólida */
 .dark .bg-primary {
-  background: var(--bg-primary) !important;
+  background-color: var(--bg-primary) !important;
   background-attachment: fixed;
   min-height: 100vh;
 }
@@ -140,11 +140,11 @@ html, body {
   backdrop-filter: blur(5px);
 }
 
-/* Hero section with exact gradient from image */
+/* Hero section with solid color */
 .hero-bg {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #000000 0%, #090E16 52%, #0B172C 92%);
+  background: #090E16;
   background-attachment: fixed;
 }
 
