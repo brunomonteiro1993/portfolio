@@ -39,12 +39,28 @@
   color: #fff;
 }
 
+/* Títulos azuis em ambos os modos */
 h2 {
-  color: #4ca1f9;
+  color: #4ca1f9 !important;
 }
 
-.desenvolvedor {
-  color: #4ca1f9;
+.desenvolvedor,
+.desenvolvedor span {
+  color: #4ca1f9 !important;
+}
+
+/* Modo light - garantir cor azul */
+:root:not(.dark) h2,
+:root:not(.dark) .desenvolvedor,
+:root:not(.dark) .desenvolvedor span {
+  color: #4ca1f9 !important;
+}
+
+/* Modo dark - garantir cor azul */
+.dark h2,
+.dark .desenvolvedor,
+.dark .desenvolvedor span {
+  color: #4ca1f9 !important;
 }
 
 .conversar {
@@ -91,6 +107,11 @@ h2 {
 /* Technology tags */
 .tech-tag-card {
   background-color: #1a1a2e;
+}
+
+/* Modo light - tech-tag-card azul */
+:root:not(.dark) .tech-tag-card {
+  background-color: rgba(40, 169, 224, 0.25) !important;
 }
 
 /* Contact Section */

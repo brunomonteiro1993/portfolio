@@ -52,16 +52,21 @@ body:not(.dark) .bg-primary {
 :root:not(.dark) .text-primary,
 :root:not(.dark) .text-secondary,
 :root:not(.dark) h1,
-:root:not(.dark) h2,
 :root:not(.dark) h3,
 :root:not(.dark) h4,
 :root:not(.dark) h5,
 :root:not(.dark) h6,
 :root:not(.dark) p,
-:root:not(.dark) span,
 :root:not(.dark) a,
 :root:not(.dark) button {
-  color: #000000 !important;
+  color: #000000;
+}
+
+/* Modo light - h2 e desenvolvedor azuis */
+:root:not(.dark) h2,
+:root:not(.dark) .desenvolvedor,
+:root:not(.dark) .desenvolvedor span {
+  color: #4ca1f9 !important;
 }
 
 .bg-secondary {
