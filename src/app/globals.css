@@ -34,7 +34,8 @@ body {
   color: #000000 !important;
 }
 
-/* Forçar textos pretos no modo light */
-:root:not(.dark) * {
+/* Forçar textos pretos no modo light (exceto h2 e .desenvolvedor) */
+:root:not(.dark) *:not(h2):not(.desenvolvedor) {
   color: #000000 !important;
 }
+
