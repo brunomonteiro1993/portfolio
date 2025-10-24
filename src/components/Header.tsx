@@ -2,11 +2,18 @@
 
 import { ThemeToggle } from "./ThemeToggle";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
 import Image from "next/image";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { theme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const navigation = [
     { name: "Início", href: "#inicio" },
@@ -22,7 +29,7 @@ export function Header() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Image
-              src="/image/headerBruno.png"
+              src={mounted && theme === 'light' ? "/image/headerbrunoLigth.png" : "/image/headerBruno.png"}
               alt="Bruno"
               width={120}
               height={32}
