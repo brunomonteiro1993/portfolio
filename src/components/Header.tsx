@@ -1,6 +1,6 @@
 "use client";
 
-import { ThemeToggle } from "./ThemeToggle";
+// import { ThemeToggle } from "./ThemeToggle";
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
@@ -21,6 +21,26 @@ export function Header() {
     // { name: "Projetos", href: "#projetos" },
     { name: "Contato", href: "#contato" },
   ];
+
+  const handleNavigationClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace("#", "");
+    const targetElement = document.getElementById(targetId);
+    
+    if (targetElement) {
+      const headerHeight = 64; // altura do header (h-16 = 4rem = 64px)
+      const elementPosition = targetElement.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+    
+    // Fecha o menu mobile após o clique
+    setIsMenuOpen(false);
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-primary/90 backdrop-blur-md border-b border-theme">
@@ -45,18 +65,19 @@ export function Header() {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-secondary hover:text-primary transition-colors duration-200 font-medium"
+                  onClick={(e) => handleNavigationClick(e, item.href)}
+                  className="text-secondary hover:text-primary transition-colors duration-200 font-medium cursor-pointer"
                 >
                   {item.name}
                 </a>
               ))}
             </nav>
-            <ThemeToggle />
+            {/* <ThemeToggle /> */}
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-4">
-            <ThemeToggle />
+            {/* <ThemeToggle /> */}
             <button
               className="p-2 rounded-lg bg-secondary hover:bg-tertiary transition-colors duration-200"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -79,8 +100,8 @@ export function Header() {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="block px-3 py-2 text-secondary hover:text-primary hover:bg-tertiary rounded-md transition-colors duration-200 font-medium"
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={(e) => handleNavigationClick(e, item.href)}
+                  className="block px-3 py-2 text-secondary hover:text-primary hover:bg-tertiary rounded-md transition-colors duration-200 font-medium cursor-pointer"
                 >
                   {item.name}
                 </a>

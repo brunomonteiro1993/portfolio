@@ -108,7 +108,7 @@ export default function Home() {
                 </div>
 
                 {/* Technology Tags */}
-                <div className="flex flex-wrap gap-4 mt-8">
+                {/* <div className="flex flex-wrap gap-4 mt-8">
                   {[
                     "PHP",
                     "Laravel",
@@ -133,7 +133,7 @@ export default function Home() {
                       {tech}
                     </span>
                   ))}
-                </div>
+                </div> */}
 
                 {/* Action Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 mt-8">
