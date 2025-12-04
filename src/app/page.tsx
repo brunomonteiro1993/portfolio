@@ -32,14 +32,31 @@ export default function Home() {
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
+        const wasAnimated = entry.target.getAttribute('data-animated') === 'true';
+        
+        // Se já foi animado ao carregar, não faz nada ao fazer scroll
+        if (wasAnimated) {
+          return;
+        }
+        
+        // Só anima se ainda não foi animado
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-        } else {
-          // Remove a classe quando o elemento sai da viewport
-          entry.target.classList.remove('visible');
+          entry.target.setAttribute('data-animated', 'true');
         }
       });
     }, observerOptions);
+
+    // Função para verificar se elemento já está visível
+    const isElementVisible = (el: Element): boolean => {
+      const rect = el.getBoundingClientRect();
+      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+      
+      return (
+        rect.top < windowHeight &&
+        rect.bottom > 0
+      );
+    };
 
     // Função para observar elementos
     const observeElements = () => {
@@ -48,8 +65,28 @@ export default function Home() {
       );
 
       animatedElements.forEach((el) => {
-        // Garante que comece sem a classe visible
+        // Se já foi processado, não processa novamente
+        if (el.getAttribute('data-processed') === 'true') {
+          return;
+        }
+        
+        // Marca como processado
+        el.setAttribute('data-processed', 'true');
+        
+        // Garante que comece sem a classe para forçar a animação
         el.classList.remove('visible');
+        
+        // Verifica se o elemento já está visível ao carregar
+        if (isElementVisible(el)) {
+          // Se já estiver visível, adiciona a classe após um pequeno delay para forçar a animação
+          setTimeout(() => {
+            if (el.getAttribute('data-animated') !== 'true') {
+              el.classList.add('visible');
+              el.setAttribute('data-animated', 'true');
+            }
+          }, 100);
+        }
+        
         observer.observe(el);
       });
     };
@@ -131,7 +168,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto w-full">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               {/* Left Side - Text Content */}
-              <div className="space-y-8">
+              <div className="space-y-8 scroll-slide-left">
                 {/* Main Title */}
                 <div className="space-y-4">
                   <h5 className="text-4xl md:text-6xl font-bold text-primary leading-tight">
@@ -219,7 +256,7 @@ export default function Home() {
               </div>
 
               {/* Right Side - Profile Image */}
-              <div className="flex justify-center lg:justify-end">
+              <div className="flex justify-center lg:justify-end scroll-slide-right">
                 <Image
                   src="/image/fotoParaSection.png"
                   alt="Bruno Gonçalves"
