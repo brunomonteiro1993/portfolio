@@ -23,6 +23,49 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Scroll Animation Hook
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: '0px 0px -80px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          // Remove a classe quando o elemento sai da viewport
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, observerOptions);
+
+    // Função para observar elementos
+    const observeElements = () => {
+      const animatedElements = document.querySelectorAll(
+        '.scroll-fade-in, .scroll-slide-left, .scroll-slide-right, .scroll-scale-in'
+      );
+
+      animatedElements.forEach((el) => {
+        // Garante que comece sem a classe visible
+        el.classList.remove('visible');
+        observer.observe(el);
+      });
+    };
+
+    // Observar elementos quando o componente montar
+    observeElements();
+
+    // Também observar após um pequeno delay para elementos que podem ser carregados depois
+    const timeoutId = setTimeout(observeElements, 300);
+
+    return () => {
+      clearTimeout(timeoutId);
+      observer.disconnect();
+    };
+  }, []);
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -193,7 +236,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
               {/* Left Side - Image */}
-              <div className="flex justify-center lg:justify-start">
+              <div className="flex justify-center lg:justify-start scroll-slide-left">
                 <div className="w-full max-w-md">
                   <Image
                     src="/image/sobreMin.png"
@@ -206,7 +249,7 @@ export default function Home() {
               </div>
 
               {/* Right Side - About Content */}
-              <div className="space-y-6">
+              <div className="space-y-6 scroll-slide-right">
                 <div>
                   <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
                     Sobre Mim
@@ -242,7 +285,7 @@ export default function Home() {
         {/* Skills Section */}
         <section id="habilidades" className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
+            <div className="text-center mb-16 scroll-fade-in">
               <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
                 Minhas Habilidades
               </h2>
@@ -275,7 +318,7 @@ export default function Home() {
               ].map((skill) => (
                 <div
                   key={skill.name}
-                  className="skill-card bg-primary p-4 rounded-lg  border-accent-primary hover:shadow-theme-lg transition-all duration-200 flex flex-col items-center justify-center text-center"
+                  className="skill-card scroll-scale-in bg-primary p-4 rounded-lg  border-accent-primary hover:shadow-theme-lg transition-all duration-200 flex flex-col items-center justify-center text-center"
                 >
                   <div className="mb-3 flex items-center justify-center">
                     <Image
@@ -298,7 +341,7 @@ export default function Home() {
         {/* Experience and Training Section */}
         <section id="experiencia" className="py-20 bg-secondary">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
+            <div className="text-center mb-16 scroll-fade-in">
               <h2 className="text-3xl md:text-4xl font-bold text-accent-primary mb-4">
                 Experiência e Treinamento
               </h2>
@@ -308,7 +351,8 @@ export default function Home() {
               {experiencesAndTraining.map((item, index) => (
                 <div
                   key={index}
-                  className="experience-card p-6 rounded-xl hover:shadow-theme-lg transition-all duration-200"
+                  className="experience-card scroll-fade-in p-6 rounded-xl hover:shadow-theme-lg transition-all duration-200"
+                  style={{ transitionDelay: `${index * 0.1}s` }}
                 >
                   <div className="period-text text-xs mb-3 uppercase tracking-wide font-semibold">
                     {item.period}
@@ -351,7 +395,7 @@ export default function Home() {
         {/* Contact Section */}
         <section id="contato" className="py-20">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
+            <div className="text-center mb-16 scroll-fade-in">
               <h2 className="text-3xl md:text-4xl font-bold text-accent-primary mb-4">
                 Contatos
               </h2>
@@ -361,7 +405,7 @@ export default function Home() {
               {/* Email Card */}
               <a
                 href="mailto:brunogoncalvesmonteiro@gmail.com"
-                className="contact-card flex flex-col items-center text-center group"
+                className="contact-card scroll-scale-in flex flex-col items-center text-center group"
               >
                 <div className="contact-icon-circle mb-4">
                   <Image
@@ -380,7 +424,7 @@ export default function Home() {
                 href="https://github.com/brunomonteiro1993"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="contact-card flex flex-col items-center text-center group"
+                className="contact-card scroll-scale-in flex flex-col items-center text-center group"
               >
                 <div className="contact-icon-circle mb-4">
                   <Image
@@ -399,7 +443,7 @@ export default function Home() {
                 href="https://www.linkedin.com/in/brunogonçalves-"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="contact-card flex flex-col items-center text-center group"
+                className="contact-card scroll-scale-in flex flex-col items-center text-center group"
               >
                 <div className="contact-icon-circle mb-4">
                   <Image
@@ -418,7 +462,7 @@ export default function Home() {
                 href="https://wa.me/5521980109064"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="contact-card flex flex-col items-center text-center group"
+                className="contact-card scroll-scale-in flex flex-col items-center text-center group"
               >
                 <div className="contact-icon-circle mb-4">
                   <Image
