@@ -1,6 +1,6 @@
 "use client";
 
-// import { ThemeToggle } from "./ThemeToggle";
+import { ThemeToggle } from "./ThemeToggle";
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
@@ -72,12 +72,12 @@ export function Header() {
                 </a>
               ))}
             </nav>
-            {/* <ThemeToggle /> */}
+            <ThemeToggle />
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-4">
-            {/* <ThemeToggle /> */}
+            <ThemeToggle />
             <button
               className="p-2 rounded-lg bg-secondary hover:bg-tertiary transition-colors duration-200"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
