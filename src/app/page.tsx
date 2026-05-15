@@ -380,12 +380,12 @@ export default function Home() {
                 { name: "Laravel", icon: "/image/laravel.png" },
                 { name: "REST API", icon: "/image/reastApi.png" },
                 // Banco de Dados
-                { name: "MySQL", icon: "/image/mysql.png" },
+                { name: "MySQL", icon: "/image/mySql.png" },
                 { name: "Supabase", icon: "/image/supabase.png" },
                 // Ferramentas
                 { name: "Git", icon: "/image/git.png" },
                 { name: "GitHub", icon: "/image/gitHub.png" },
-                { name: "VsCode", icon: "/image/vsCode.png" },
+                { name: "VsCode", icon: "/image/vscode.png" },
               ].map((skill) => (
                 <div
                   key={skill.name}
