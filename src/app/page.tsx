@@ -386,6 +386,7 @@ export default function Home() {
                 { name: "Git", icon: "/image/git.png" },
                 { name: "GitHub", icon: "/image/gitHub.png" },
                 { name: "VsCode", icon: "/image/vscode.png" },
+
               ].map((skill) => (
                 <div
                   key={skill.name}
