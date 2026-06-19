@@ -1,0 +1,48 @@
+.demo-back-link {
+  color: #a0a0a0;
+}
+
+.demo-steps-nav {
+  position: sticky;
+  top: 5.5rem;
+}
+
+.demo-step-button {
+  background: rgba(15, 15, 30, 0.5);
+  border: 1px solid transparent;
+}
+
+.demo-step-button:hover {
+  border-color: rgba(40, 169, 224, 0.3);
+}
+
+.demo-step-button-active {
+  background: rgba(40, 169, 224, 0.15);
+  border-color: rgba(40, 169, 224, 0.5);
+  box-shadow: 0 0 20px rgba(68, 99, 217, 0.15);
+}
+
+.demo-stage {
+  min-height: 100%;
+}
+
+.demo-stage-header,
+.demo-stage-footer {
+  background: rgba(15, 15, 30, 0.6);
+}
+
+.demo-stage-image {
+  min-height: 320px;
+}
+
+@media (max-width: 1023px) {
+  .demo-steps-nav {
+    position: static;
+  }
+
+  .demo-steps-nav ol {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+}

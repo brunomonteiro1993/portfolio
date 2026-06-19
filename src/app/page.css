@@ -84,6 +84,37 @@ h2 {
   box-shadow: 0 10px 30px rgba(32, 140, 252, 0.3);
 }
 
+/* Projects Section */
+.project-card {
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(68, 99, 217, 0.15);
+  backdrop-filter: blur(10px);
+  background: rgba(15, 15, 30, 0.6);
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(32, 140, 252, 0.3);
+}
+
+.project-gallery-main,
+.project-gallery-thumb {
+  background-color: #0f0f1e;
+}
+
+.project-link-button {
+  color: #8dddff;
+  border: 1px solid rgba(40, 169, 224, 0.4);
+  border-radius: 3.40282e38px;
+  transition: all 0.3s ease;
+}
+
+.project-link-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(32, 140, 252, 0.25);
+  background-color: rgba(40, 169, 224, 0.1);
+}
+
 /* Experience and Training Section */
 .experience-card {
   transition: all 0.3s ease;

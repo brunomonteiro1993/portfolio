@@ -4,11 +4,19 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import Image from "next/image";
 import { TypewriterText } from "@/components/TypewriterText";
+import { projects } from "@/data/projects";
+import { consumeScrollToSection, initScrollAnimations, scrollToSection } from "@/lib/scroll";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import "./page.css";
 
 export default function Home() {
+  const pathname = usePathname();
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [activeProjectImage, setActiveProjectImage] = useState(0);
+
+  const featuredProject = projects[0];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,84 +31,32 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Scroll Animation Hook
   useEffect(() => {
-    const observerOptions = {
-      threshold: 0.15,
-      rootMargin: "0px 0px -80px 0px",
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        const wasAnimated =
-          entry.target.getAttribute("data-animated") === "true";
-
-        // Se já foi animado ao carregar, não faz nada ao fazer scroll
-        if (wasAnimated) {
-          return;
-        }
-
-        // Só anima se ainda não foi animado
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          entry.target.setAttribute("data-animated", "true");
-        }
-      });
-    }, observerOptions);
-
-    // Função para verificar se elemento já está visível
-    const isElementVisible = (el: Element): boolean => {
-      const rect = el.getBoundingClientRect();
-      const windowHeight =
-        window.innerHeight || document.documentElement.clientHeight;
-
-      return rect.top < windowHeight && rect.bottom > 0;
-    };
-
-    // Função para observar elementos
-    const observeElements = () => {
-      const animatedElements = document.querySelectorAll(
-        ".scroll-fade-in, .scroll-slide-left, .scroll-slide-right, .scroll-scale-in",
-      );
-
-      animatedElements.forEach((el) => {
-        // Se já foi processado, não processa novamente
-        if (el.getAttribute("data-processed") === "true") {
-          return;
-        }
-
-        // Marca como processado
-        el.setAttribute("data-processed", "true");
-
-        // Garante que comece sem a classe para forçar a animação
-        el.classList.remove("visible");
-
-        // Verifica se o elemento já está visível ao carregar
-        if (isElementVisible(el)) {
-          // Se já estiver visível, adiciona a classe após um pequeno delay para forçar a animação
-          setTimeout(() => {
-            if (el.getAttribute("data-animated") !== "true") {
-              el.classList.add("visible");
-              el.setAttribute("data-animated", "true");
-            }
-          }, 100);
-        }
-
-        observer.observe(el);
-      });
-    };
-
-    // Observar elementos quando o componente montar
-    observeElements();
-
-    // Também observar após um pequeno delay para elementos que podem ser carregados depois
-    const timeoutId = setTimeout(observeElements, 300);
-
-    return () => {
-      clearTimeout(timeoutId);
-      observer.disconnect();
-    };
+    const disconnectObserver = initScrollAnimations();
+    return disconnectObserver;
   }, []);
+
+  useEffect(() => {
+    if (pathname !== "/") return;
+
+    const sectionId =
+      consumeScrollToSection() ||
+      window.location.hash.replace("#", "") ||
+      null;
+
+    if (!sectionId) return;
+
+    if (window.location.hash) {
+      window.history.replaceState(null, "", "/");
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      initScrollAnimations();
+      scrollToSection(sectionId);
+    }, 150);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [pathname]);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -407,6 +363,132 @@ export default function Home() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Projects Section */}
+        <section id="projetos" className="py-20 bg-secondary">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16 scroll-fade-in">
+              <h2 className="text-3xl md:text-4xl font-bold text-accent-primary mb-4">
+                Meus Projetos
+              </h2>
+              <p className="text-secondary max-w-2xl mx-auto">
+                Aplicações que desenvolvi com foco em produto, integrações e
+                experiência de uso.
+              </p>
+            </div>
+
+            {featuredProject && (
+              <article className="project-card scroll-fade-in rounded-xl overflow-hidden">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                  <div className="project-gallery p-6 lg:p-8">
+                    <div className="project-gallery-main relative aspect-video rounded-lg overflow-hidden mb-4">
+                      <Image
+                        src={
+                          featuredProject.galleryImages[activeProjectImage]
+                            ?.src ?? featuredProject.galleryImages[0].src
+                        }
+                        alt={
+                          featuredProject.galleryImages[activeProjectImage]
+                            ?.alt ?? featuredProject.title
+                        }
+                        fill
+                        className="object-cover object-top"
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                      />
+                    </div>
+                    <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-7 gap-2">
+                      {featuredProject.galleryImages.map((image, imageIndex) => (
+                        <button
+                          key={image.src}
+                          type="button"
+                          onClick={() => setActiveProjectImage(imageIndex)}
+                          className={`project-gallery-thumb relative aspect-video rounded-md overflow-hidden transition-all duration-200 ${
+                            activeProjectImage === imageIndex
+                              ? "ring-2 ring-accent-primary"
+                              : "opacity-70 hover:opacity-100"
+                          }`}
+                          aria-label={image.alt}
+                        >
+                          <Image
+                            src={image.src}
+                            alt={image.alt}
+                            fill
+                            className="object-cover object-top"
+                            sizes="80px"
+                          />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="project-content p-6 lg:p-8 flex flex-col">
+                    <p className="period-text text-xs mb-2 uppercase tracking-wide font-semibold">
+                      {featuredProject.subtitle}
+                    </p>
+                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                      {featuredProject.title}
+                    </h3>
+                    <p className="text-white text-sm leading-relaxed mb-5">
+                      {featuredProject.description}
+                    </p>
+
+                    <ul className="project-highlights text-sm text-secondary space-y-2 mb-6">
+                      {featuredProject.highlights.map((highlight) => (
+                        <li key={highlight} className="flex gap-2">
+                          <span className="text-accent-primary shrink-0">•</span>
+                          <span>{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {featuredProject.technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          className="tech-tag-card px-3 py-1 text-white text-xs rounded"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="flex flex-col sm:flex-row flex-wrap gap-3 mt-auto">
+                      {featuredProject.links.map((link) => {
+                        const className = link.primary
+                          ? "download-cv-button inline-flex items-center justify-center px-6 py-3 text-sm font-medium"
+                          : "project-link-button inline-flex items-center justify-center px-6 py-3 text-sm font-medium";
+
+                        if (link.external === false) {
+                          return (
+                            <Link
+                              key={link.label}
+                              href={link.href}
+                              className={className}
+                            >
+                              {link.label}
+                            </Link>
+                          );
+                        }
+
+                        return (
+                          <a
+                            key={link.label}
+                            href={link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={className}
+                          >
+                            {link.label}
+                          </a>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              </article>
+            )}
           </div>
         </section>
 
