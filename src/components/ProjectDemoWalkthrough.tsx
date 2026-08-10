@@ -2,27 +2,34 @@
 
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { getProjectById } from "@/data/projects";
-import Image from "next/image";
+import { getStepImages, type Project } from "@/data/projects";
 import { requestScrollToSection } from "@/lib/scroll";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "@/app/page.css";
-import "./demo.css";
+import "./project-demo.css";
 
-const project = getProjectById("restaurante");
+type ProjectDemoWalkthroughProps = {
+  project: Project;
+};
 
-export default function RestauranteDemoPage() {
+export function ProjectDemoWalkthrough({
+  project,
+}: ProjectDemoWalkthroughProps) {
   const router = useRouter();
   const [activeStep, setActiveStep] = useState(0);
-
-  if (!project) {
-    return null;
-  }
+  const [activeImage, setActiveImage] = useState(0);
 
   const currentStep = project.demoSteps[activeStep];
+  const stepImages = getStepImages(currentStep);
+  const currentImage = stepImages[activeImage] ?? stepImages[0];
   const isFirstStep = activeStep === 0;
   const isLastStep = activeStep === project.demoSteps.length - 1;
+
+  useEffect(() => {
+    setActiveImage(0);
+  }, [activeStep]);
 
   return (
     <div className="min-h-screen bg-primary">
@@ -48,11 +55,7 @@ export default function RestauranteDemoPage() {
             <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">
               {project.title}
             </h1>
-            <p className="text-secondary max-w-3xl">
-              Demonstração visual do sistema na ordem em que o processo acontece:
-              setup do restaurante, pedido do cliente, operação da cozinha e
-              fechamento da conta.
-            </p>
+            <p className="text-secondary max-w-3xl">{project.demoIntro}</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-[240px_1fr] gap-8 items-start">
@@ -96,20 +99,61 @@ export default function RestauranteDemoPage() {
               </div>
 
               <div className="demo-stage-image relative aspect-video bg-black/40">
-                <Image
-                  key={currentStep.image}
-                  src={currentStep.image}
-                  alt={currentStep.alt}
-                  fill
-                  className="object-contain object-top p-2"
-                  sizes="(max-width: 1024px) 100vw, 70vw"
-                  priority
-                />
+                {currentImage ? (
+                  <Image
+                    key={currentImage.src}
+                    src={currentImage.src}
+                    alt={currentImage.alt}
+                    fill
+                    className="object-contain object-top p-2"
+                    sizes="(max-width: 1024px) 100vw, 70vw"
+                    quality={95}
+                    priority
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-6 text-center">
+                    <p className="text-white font-medium">Print em breve</p>
+                    <p className="text-secondary text-sm max-w-md">
+                      Esta etapa já está documentada. As imagens do fluxo serão
+                      adicionadas em seguida.
+                    </p>
+                  </div>
+                )}
               </div>
+
+              {stepImages.length > 1 ? (
+                <div className="px-6 pt-4 grid grid-cols-3 gap-2">
+                  {stepImages.map((image, imageIndex) => (
+                    <button
+                      key={image.src}
+                      type="button"
+                      onClick={() => setActiveImage(imageIndex)}
+                      className={`project-gallery-thumb relative aspect-video rounded-md overflow-hidden transition-all duration-200 ${
+                        activeImage === imageIndex
+                          ? "ring-2 ring-accent-primary"
+                          : "opacity-70 hover:opacity-100"
+                      }`}
+                      aria-label={image.alt}
+                    >
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        fill
+                        quality={90}
+                        className="object-cover object-top"
+                        sizes="(max-width: 1024px) 33vw, 220px"
+                      />
+                    </button>
+                  ))}
+                </div>
+              ) : null}
 
               <div className="demo-stage-footer p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <p className="text-sm text-secondary">
                   {activeStep + 1} de {project.demoSteps.length}
+                  {stepImages.length > 1
+                    ? ` · tela ${activeImage + 1}/${stepImages.length}`
+                    : ""}
                 </p>
                 <div className="flex gap-3 w-full sm:w-auto">
                   <button

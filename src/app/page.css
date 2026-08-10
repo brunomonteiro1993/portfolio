@@ -102,6 +102,10 @@ h2 {
   background-color: #0f0f1e;
 }
 
+.project-gallery-thumb img {
+  image-rendering: -webkit-optimize-contrast;
+}
+
 .project-link-button {
   color: #8dddff;
   border: 1px solid rgba(40, 169, 224, 0.4);

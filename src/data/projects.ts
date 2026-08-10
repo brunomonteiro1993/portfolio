@@ -3,8 +3,11 @@ export type ProjectDemoStep = {
   phase: string;
   title: string;
   description: string;
-  image: string;
-  alt: string;
+  /** Imagem única da etapa (legado / etapas simples) */
+  image?: string;
+  alt?: string;
+  /** Várias imagens na mesma etapa (ex.: telas do dashboard) */
+  images?: { src: string; alt: string }[];
 };
 
 export type ProjectLink = {
@@ -23,6 +26,7 @@ export type Project = {
   technologies: string[];
   links: ProjectLink[];
   demoPath: string;
+  demoIntro: string;
   demoSteps: ProjectDemoStep[];
   galleryImages: { src: string; alt: string }[];
 };
@@ -111,6 +115,111 @@ const restauranteDemoSteps: ProjectDemoStep[] = [
   },
 ];
 
+const shoppingListDemoSteps: ProjectDemoStep[] = [
+  {
+    step: 1,
+    phase: "Acesso",
+    title: "Login",
+    description:
+      "Tela de entrada com e-mail, senha, recuperação de senha e sessão persistente via Supabase Auth.",
+    image: "/image/projects/lista-compras/login.png",
+    alt: "Tela de login do Shopping List",
+  },
+  {
+    step: 2,
+    phase: "Acesso",
+    title: "Cadastro",
+    description:
+      "Criação de conta para começar a gerenciar listas de compras com orçamento.",
+    image: "/image/projects/lista-compras/cadastro.png",
+    alt: "Tela de cadastro do Shopping List",
+  },
+  {
+    step: 3,
+    phase: "Planejamento",
+    title: "Minhas listas",
+    description:
+      "Visão geral das listas com status (rascunho, ativa, concluída/cancelada) e resumo financeiro.",
+    image: "/image/projects/lista-compras/minhas-listas.png",
+    alt: "Listagem de listas de compras",
+  },
+  {
+    step: 4,
+    phase: "Planejamento",
+    title: "Nova lista com orçamento",
+    description:
+      "Criação de lista definindo orçamento e dados iniciais para planejar a compra.",
+    image: "/image/projects/lista-compras/nova-lista.png",
+    alt: "Formulário de nova lista com orçamento",
+  },
+  {
+    step: 5,
+    phase: "Planejamento",
+    title: "Adicionar produtos",
+    description:
+      "CRUD de itens com quantidade, unidade, categoria e preço estimado/real.",
+    image: "/image/projects/lista-compras/adicionar-produto.png",
+    alt: "Modal de adicionar produto à lista",
+  },
+  {
+    step: 6,
+    phase: "No mercado",
+    title: "Modo Compra",
+    description:
+      "Interface mobile-first para marcar itens no supermercado, registrar preços reais e acompanhar o orçamento.",
+    image: "/image/projects/lista-compras/modo-compra.png",
+    alt: "Modo Compra no mercado",
+  },
+  {
+    step: 7,
+    phase: "Histórico",
+    title: "Histórico de compras",
+    description:
+      "Histórico com comparação de preços e opção de reutilizar uma lista concluída como nova lista.",
+    image: "/image/projects/lista-compras/historico-compras.png",
+    alt: "Histórico de compras e reutilização",
+  },
+  {
+    step: 8,
+    phase: "Insights",
+    title: "Dashboard inteligente",
+    description:
+      "Produtos frequentes, alertas e sugestões de preço, além da evolução de preço por item — tudo no mesmo fluxo de insights.",
+    images: [
+      {
+        src: "/image/projects/lista-compras/dashboard-frequentes.png",
+        alt: "Produtos frequentes e alertas de preço",
+      },
+      {
+        src: "/image/projects/lista-compras/dashboard-sugestoes.png",
+        alt: "Sugestões de aumento de preço",
+      },
+      {
+        src: "/image/projects/lista-compras/dashboard-evolucao-preco.png",
+        alt: "Evolução de preço de um produto",
+      },
+    ],
+  },
+];
+
+function getStepImages(step: ProjectDemoStep) {
+  if (step.images && step.images.length > 0) {
+    return step.images;
+  }
+
+  if (step.image) {
+    return [{ src: step.image, alt: step.alt ?? step.title }];
+  }
+
+  return [];
+}
+
+function galleryFromSteps(steps: ProjectDemoStep[]) {
+  return steps.flatMap(getStepImages);
+}
+
+export { getStepImages };
+
 export const projects: Project[] = [
   {
     id: "restaurante",
@@ -138,6 +247,8 @@ export const projects: Project[] = [
       "Render",
     ],
     demoPath: "/projetos/restaurante",
+    demoIntro:
+      "Demonstração visual do sistema na ordem em que o processo acontece: setup do restaurante, pedido do cliente, operação da cozinha e fechamento da conta.",
     links: [
       {
         label: "Ver demo",
@@ -162,10 +273,58 @@ export const projects: Project[] = [
       },
     ],
     demoSteps: restauranteDemoSteps,
-    galleryImages: restauranteDemoSteps.map((step) => ({
-      src: step.image,
-      alt: step.alt,
-    })),
+    galleryImages: galleryFromSteps(restauranteDemoSteps),
+  },
+  {
+    id: "lista-compras",
+    title: "Lista de Compras Financeira",
+    subtitle: "Shopping List com controle de orçamento",
+    description:
+      "App full stack para gerenciar listas de supermercado com controle de orçamento. Inclui autenticação, CRUD de listas e produtos, Modo Compra mobile-first, histórico com evolução de preços, favoritos e sugestões inteligentes. Stack: React, TypeScript, Node/Express e Supabase (Auth + PostgreSQL com RLS), com validação Zod e API REST segura.",
+    highlights: [
+      "Lista de compras com orçamento e status (rascunho → ativa → concluída)",
+      "Modo Compra mobile-first para usar no mercado",
+      "Histórico com comparação de preços e reutilização de listas",
+      "Dashboard com frequentes, favoritos, sugestões e alertas de preço",
+      "Arquitetura React → API Express → Supabase com RLS",
+    ],
+    technologies: [
+      "React",
+      "Vite",
+      "TypeScript",
+      "Tailwind CSS",
+      "React Query",
+      "Zod",
+      "Node.js",
+      "Express",
+      "Supabase",
+      "PostgreSQL",
+      "Vercel",
+      "Render",
+    ],
+    demoPath: "/projetos/lista-compras",
+    demoIntro:
+      "Walkthrough do fluxo: login e cadastro, planejamento da lista com orçamento, Modo Compra no mercado, histórico e dashboard inteligente (frequentes, sugestões e evolução de preço).",
+    links: [
+      {
+        label: "Ver demo",
+        href: "/projetos/lista-compras",
+        external: false,
+        primary: true,
+      },
+      {
+        label: "GitHub",
+        href: "https://github.com/brunomonteiro1993/Lista-de-comprar-financeira",
+        external: true,
+      },
+      {
+        label: "App ao vivo",
+        href: "https://lista-de-comprar-financeira.vercel.app/dashboard",
+        external: true,
+      },
+    ],
+    demoSteps: shoppingListDemoSteps,
+    galleryImages: galleryFromSteps(shoppingListDemoSteps),
   },
 ];
 
