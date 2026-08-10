@@ -14,9 +14,9 @@ import "./page.css";
 export default function Home() {
   const pathname = usePathname();
   const [showScrollTop, setShowScrollTop] = useState(false);
-  const [activeProjectImage, setActiveProjectImage] = useState(0);
-
-  const featuredProject = projects[0];
+  const [activeProjectImages, setActiveProjectImages] = useState<
+    Record<string, number>
+  >({});
 
   useEffect(() => {
     const handleScroll = () => {
@@ -379,116 +379,138 @@ export default function Home() {
               </p>
             </div>
 
-            {featuredProject && (
-              <article className="project-card scroll-fade-in rounded-xl overflow-hidden">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-                  <div className="project-gallery p-6 lg:p-8">
-                    <div className="project-gallery-main relative aspect-video rounded-lg overflow-hidden mb-4">
-                      <Image
-                        src={
-                          featuredProject.galleryImages[activeProjectImage]
-                            ?.src ?? featuredProject.galleryImages[0].src
-                        }
-                        alt={
-                          featuredProject.galleryImages[activeProjectImage]
-                            ?.alt ?? featuredProject.title
-                        }
-                        fill
-                        className="object-cover object-top"
-                        sizes="(max-width: 1024px) 100vw, 50vw"
-                      />
-                    </div>
-                    <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-7 gap-2">
-                      {featuredProject.galleryImages.map((image, imageIndex) => (
-                        <button
-                          key={image.src}
-                          type="button"
-                          onClick={() => setActiveProjectImage(imageIndex)}
-                          className={`project-gallery-thumb relative aspect-video rounded-md overflow-hidden transition-all duration-200 ${
-                            activeProjectImage === imageIndex
-                              ? "ring-2 ring-accent-primary"
-                              : "opacity-70 hover:opacity-100"
-                          }`}
-                          aria-label={image.alt}
-                        >
-                          <Image
-                            src={image.src}
-                            alt={image.alt}
-                            fill
-                            className="object-cover object-top"
-                            sizes="80px"
-                          />
-                        </button>
-                      ))}
-                    </div>
-                  </div>
+            <div className="space-y-10">
+              {projects.map((project) => {
+                const activeImageIndex = activeProjectImages[project.id] ?? 0;
+                const hasGallery = project.galleryImages.length > 0;
+                const activeImage =
+                  project.galleryImages[activeImageIndex] ??
+                  project.galleryImages[0];
 
-                  <div className="project-content p-6 lg:p-8 flex flex-col">
-                    <p className="period-text text-xs mb-2 uppercase tracking-wide font-semibold">
-                      {featuredProject.subtitle}
-                    </p>
-                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                      {featuredProject.title}
-                    </h3>
-                    <p className="text-white text-sm leading-relaxed mb-5">
-                      {featuredProject.description}
-                    </p>
+                return (
+                  <article
+                    key={project.id}
+                    className="project-card scroll-fade-in rounded-xl overflow-hidden"
+                  >
+                    <div
+                      className={`grid grid-cols-1 gap-0 ${
+                        hasGallery ? "lg:grid-cols-2" : ""
+                      }`}
+                    >
+                      {hasGallery ? (
+                        <div className="project-gallery p-6 lg:p-8">
+                          <div className="project-gallery-main relative aspect-video rounded-lg overflow-hidden mb-4">
+                            <Image
+                              src={activeImage.src}
+                              alt={activeImage.alt}
+                              fill
+                              className="object-cover object-top"
+                              sizes="(max-width: 1024px) 100vw, 50vw"
+                              quality={90}
+                            />
+                          </div>
+                          <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-7 gap-2">
+                            {project.galleryImages.map((image, imageIndex) => (
+                              <button
+                                key={image.src}
+                                type="button"
+                                onClick={() =>
+                                  setActiveProjectImages((prev) => ({
+                                    ...prev,
+                                    [project.id]: imageIndex,
+                                  }))
+                                }
+                                className={`project-gallery-thumb relative aspect-video rounded-md overflow-hidden transition-all duration-200 ${
+                                  activeImageIndex === imageIndex
+                                    ? "ring-2 ring-accent-primary"
+                                    : "opacity-70 hover:opacity-100"
+                                }`}
+                                aria-label={image.alt}
+                              >
+                                <Image
+                                  src={image.src}
+                                  alt={image.alt}
+                                  fill
+                                  quality={90}
+                                  className="object-cover object-top"
+                                  sizes="(max-width: 1024px) 25vw, 140px"
+                                />
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      ) : null}
 
-                    <ul className="project-highlights text-sm text-secondary space-y-2 mb-6">
-                      {featuredProject.highlights.map((highlight) => (
-                        <li key={highlight} className="flex gap-2">
-                          <span className="text-accent-primary shrink-0">•</span>
-                          <span>{highlight}</span>
-                        </li>
-                      ))}
-                    </ul>
+                      <div className="project-content p-6 lg:p-8 flex flex-col">
+                        <p className="period-text text-xs mb-2 uppercase tracking-wide font-semibold">
+                          {project.subtitle}
+                        </p>
+                        <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                          {project.title}
+                        </h3>
+                        <p className="text-white text-sm leading-relaxed mb-5">
+                          {project.description}
+                        </p>
 
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {featuredProject.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="tech-tag-card px-3 py-1 text-white text-xs rounded"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
+                        <ul className="project-highlights text-sm text-secondary space-y-2 mb-6">
+                          {project.highlights.map((highlight) => (
+                            <li key={highlight} className="flex gap-2">
+                              <span className="text-accent-primary shrink-0">
+                                •
+                              </span>
+                              <span>{highlight}</span>
+                            </li>
+                          ))}
+                        </ul>
 
-                    <div className="flex flex-col sm:flex-row flex-wrap gap-3 mt-auto">
-                      {featuredProject.links.map((link) => {
-                        const className = link.primary
-                          ? "download-cv-button inline-flex items-center justify-center px-6 py-3 text-sm font-medium"
-                          : "project-link-button inline-flex items-center justify-center px-6 py-3 text-sm font-medium";
-
-                        if (link.external === false) {
-                          return (
-                            <Link
-                              key={link.label}
-                              href={link.href}
-                              className={className}
+                        <div className="flex flex-wrap gap-2 mb-6">
+                          {project.technologies.map((tech) => (
+                            <span
+                              key={tech}
+                              className="tech-tag-card px-3 py-1 text-white text-xs rounded"
                             >
-                              {link.label}
-                            </Link>
-                          );
-                        }
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
 
-                        return (
-                          <a
-                            key={link.label}
-                            href={link.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={className}
-                          >
-                            {link.label}
-                          </a>
-                        );
-                      })}
+                        <div className="flex flex-col sm:flex-row flex-wrap gap-3 mt-auto">
+                          {project.links.map((link) => {
+                            const className = link.primary
+                              ? "download-cv-button inline-flex items-center justify-center px-6 py-3 text-sm font-medium"
+                              : "project-link-button inline-flex items-center justify-center px-6 py-3 text-sm font-medium";
+
+                            if (link.external === false) {
+                              return (
+                                <Link
+                                  key={link.label}
+                                  href={link.href}
+                                  className={className}
+                                >
+                                  {link.label}
+                                </Link>
+                              );
+                            }
+
+                            return (
+                              <a
+                                key={link.label}
+                                href={link.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={className}
+                              >
+                                {link.label}
+                              </a>
+                            );
+                          })}
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </article>
-            )}
+                  </article>
+                );
+              })}
+            </div>
           </div>
         </section>
 
