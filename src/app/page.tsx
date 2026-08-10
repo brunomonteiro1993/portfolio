@@ -215,7 +215,7 @@ export default function Home() {
                     download="Bruno-Goncalves_CV.pdf"
                     className="download-cv-button inline-flex items-center justify-center px-8 py-4 font-medium transition-all duration-200"
                   >
-                    Download CV
+                    Download Currículo
                     <svg
                       className="ml-2 h-5 w-5"
                       fill="none"
